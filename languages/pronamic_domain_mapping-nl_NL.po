@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pronamic Domain Mapping\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-01 10:42+0100\n"
-"PO-Revision-Date: 2013-03-01 10:42+0100\n"
+"POT-Creation-Date: 2013-03-01 13:54+0100\n"
+"PO-Revision-Date: 2013-03-01 13:54+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -19,27 +19,27 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: pronamic-domain-mapping.php:103 pronamic-domain-mapping.php:104
+#: pronamic-domain-mapping.php:134 pronamic-domain-mapping.php:135
 msgid "Domain Names"
 msgstr "Domeinnamen"
 
-#: admin/domain-names.php:26
+#: admin/domain-names.php:29
 msgid "All"
 msgstr "Alles"
 
-#: admin/domain-names.php:34
+#: admin/domain-names.php:37
 msgid "Domain Name"
 msgstr "Domeinnaam"
 
-#: admin/domain-names.php:35
+#: admin/domain-names.php:38
 msgid "Title"
 msgstr "Titel"
 
-#: admin/domain-names.php:53
+#: admin/domain-names.php:56
 msgid "Edit"
 msgstr "Bewerken"
 
-#: admin/domain-names.php:57
+#: admin/domain-names.php:60
 msgid "View"
 msgstr "Bekijken"
 

@@ -29,7 +29,7 @@ include $pronamic_domain_mapping_dirname . '/includes/post.php';
 /**
  * Initialize
  */
-function pronamic_domain_mapping_init( ) {
+function pronamic_domain_mapping_reqest( $args ) {
 	$host = $_SERVER['HTTP_HOST'];
 
 	global $wpdb;
@@ -48,19 +48,14 @@ function pronamic_domain_mapping_init( ) {
 	$post_id = $wpdb->get_var( $db_query );
 
 	if ( ! empty( $post_id) ) {
-		/**
-		 * We have to do an second query to prefend an redirection to the
-		 * page/post permalink. Therefor we can't use the 'request' or 
-		 * 'parse_request' hooks to adjust the query.
-		 */
-		query_posts( array(
-			'post_type' => 'any',
-			'p'         => $post_id
-		) );
+		$args['post_type'] = 'any';
+		$args['p']         = $post_id;
 	}
+	
+	return $args;
 }
 
-add_action( 'init', 'pronamic_domain_mapping_init', 1 );
+add_filter( 'request', 'pronamic_domain_mapping_reqest', 1 );
 
 /**
  * Loaded
@@ -81,6 +76,8 @@ add_action( 'plugins_loaded', 'pronamic_domain_mapping_loaded' );
  * @param boolean $leavename
  */
 function pronamic_domain_mapping_link( $link, $post ) {
+	// This is also required to prevent 'redirect_canonical'
+	// @see http://www.mydigitallife.info/how-to-disable-wordpress-canonical-url-or-permalink-auto-redirect/
 	if ( post_type_supports( $post->post_type, 'pronamic_domain_mapping' ) ) {
 		$host = get_post_meta( $post->ID, '_pronamic_domain_mapping_host', true );
 
