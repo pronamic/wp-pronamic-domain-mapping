@@ -8,14 +8,17 @@
 	global $post;
 
 	$query = new WP_Query( array(
-		'post_type' => 'any',
-		'nopaging'  => true,
+		'post_type'  => 'any',
+		'nopaging'   => true,
 		'meta_query' => array(
 			array(
 				'key'     => '_pronamic_domain_mapping_host',
 				'compare' => 'EXISTS'
 			)
-		)
+		),
+		'order'      => 'ASC',
+		'orderby'    => 'meta_value',
+		'meta_key'   => '_pronamic_domain_mapping_host'
 	) );
 	
 	?>
