@@ -41,7 +41,7 @@ function pronamic_domain_mapping_add_meta_boxes() {
 		if ( post_type_supports( $post_type, 'pronamic_domain_mapping' ) ) {
 			add_meta_box(
 				'pronamic_domain_mapping',
-				__( 'Domain Mapping', 'pronamic_domain_mapping' ),
+				__( 'Domain Name Mapping', 'pronamic_domain_mapping' ),
 				'pronamic_domain_mapping_details_meta_box',
 				$post_type,
 				'normal',
@@ -134,7 +134,7 @@ function pronamic_domain_page_edit_columns( $columns ) {
 		$new_columns['date'] = $columns['date'];
 	}
 	
-	return $new_columns;
+	return array_merge( $new_columns, $columns );
 }
 
 add_filter( 'manage_pronamic_domain_page_posts_columns', 'pronamic_domain_page_edit_columns' );
