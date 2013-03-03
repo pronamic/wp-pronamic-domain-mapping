@@ -23,7 +23,7 @@ function pronamic_domain_mapping_create_initial_post_types() {
 			'menu_position'   => 30,
 			'capability_type' => 'page',
 			// 'menu_icon'     => $orbis_hosting_plugin->plugin_url( 'admin/images/hosting_group.png' ),
-			'supports'        => array( 'title', 'editor', 'comments', 'pronamic_domain_mapping' ),
+			'supports'        => array( 'title', 'editor', 'author', 'comments', 'revisions', 'pronamic_domain_mapping' ),
 			'rewrite'         => array( 'slug' => _x( 'domain-name-page', 'slug', 'pronamic_domain_mapping' ) ) 
 		)
 	);
@@ -101,3 +101,75 @@ function pronamic_domain_mappin_save_details( $post_id, $post ) {
 }
 
 add_action( 'save_post', 'pronamic_domain_mappin_save_details', 10, 2 );
+
+/**
+ * Columns
+ * 
+ * @param unknown_type $columns
+ */
+function pronamic_domain_page_edit_columns( $columns ) {
+	$new_columns = array();
+	
+	if( isset( $columns['cb'] ) ) {
+		$new_columns['cb'] = $columns['cb'];
+	}
+	
+	// $new_columns['thumbnail'] = __('Thumbnail', 'pronamic_companies');
+	
+	if( isset( $columns['title'] ) ) {
+		$new_columns['title'] = $columns['title'];
+	}
+
+	$new_columns['pronamic_domain_mapping_host'] = __( 'Domain Name', 'pronamic_domain_mapping' );
+	
+	if( isset( $columns['author'] ) ) {
+		$new_columns['author'] = $columns['author'];
+	}
+
+	if( isset( $columns['comments'] ) ) {
+		$new_columns['comments'] = $columns['comments'];
+	}
+	
+	if( isset( $columns['date'] ) ) {
+		$new_columns['date'] = $columns['date'];
+	}
+	
+	return $new_columns;
+}
+
+add_filter( 'manage_pronamic_domain_page_posts_columns', 'pronamic_domain_page_edit_columns' );
+
+function custom_columns( $column, $post_id ) {
+	switch ( $column ) {
+		case "pronamic_domain_mapping_host":
+			$host = get_post_meta( $post_id, '_pronamic_domain_mapping_host', true);
+			$url = 'http://' . $host . '/';
+
+			echo '<a href="' . $url . '">' . $host. '</a>';
+
+			break;
+	}
+}
+
+add_action( "manage_posts_custom_column", "custom_columns", 10, 2 );
+
+// Make these columns sortable
+function sortable_columns( $columns ) {
+	$columns['pronamic_domain_mapping_host'] = 'pronamic_domain_mapping_host';
+
+	return $columns;
+}
+
+add_filter( "manage_edit-pronamic_domain_page_sortable_columns", "sortable_columns" );
+
+function price_column_orderby( $vars ) {
+	if ( isset( $vars['orderby'] ) && 'pronamic_domain_mapping_host' == $vars['orderby'] ) {
+		$vars = array_merge( $vars, array(
+			'meta_key' => '_pronamic_domain_mapping_host',
+			'orderby' => 'meta_value'
+		) );
+	}
+
+	return $vars;
+}
+add_filter( 'request', 'price_column_orderby' );
