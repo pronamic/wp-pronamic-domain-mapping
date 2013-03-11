@@ -7,14 +7,19 @@ Tested up to: 3.5.1
 Stable tag: 0.1
 License: GPLv2 or later
 
+The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.
+
 == Description ==
 
-...
+With the Pronamic Domain Mapping plugin you can easily publish a page on the 
+domain aliases or pointers of your hosting solution. This way you can easily 
+publish landinspages on the extra domain names you own.
 
 
 == Installation ==
 
-1.	
+Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your
+WordPress installation and then activate the Plugin from Plugins page.
 
 
 == Frequently Asked Questions ==
@@ -24,7 +29,8 @@ License: GPLv2 or later
 
 == Screenshots ==
 
-1.	
+1.	Domain Name pages overview
+2.	Edit domain name page
 
 
 == Changelog ==
