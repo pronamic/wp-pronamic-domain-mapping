@@ -37,7 +37,7 @@ class Pronamic_Domain_Mapping_Plugin {
 
 		// Filters
 		add_filter( 'request', array( $this, 'request' ), 1 );
-		add_filter( 'request', array( $this, 'request_orderby' ), 1 );
+		add_filter( 'request', array( $this, 'request_orderby' ) );
 		
 		add_filter( 'post_type_link', array( $this, 'post_type_link' ), 10, 2 );
 
