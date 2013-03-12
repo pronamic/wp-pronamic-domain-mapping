@@ -24,7 +24,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 
-		add_action( 'save_post', array( $this, 'save_post' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
 
 		// Post type
 		$post_type = 'pronamic_domain_page';
