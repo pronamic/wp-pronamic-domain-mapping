@@ -21,6 +21,15 @@ class Pronamic_Domain_Mapping_Plugin {
 	//////////////////////////////////////////////////
 
 	/**
+	 * Domain page ID
+	 * 
+	 * @var int
+	 */
+	private $domain_page_id;
+
+	//////////////////////////////////////////////////
+
+	/**
 	 * Constructs and initializes an Pronamic Events plugin
 	 *
 	 * @param string $file the plugin file
@@ -32,6 +41,8 @@ class Pronamic_Domain_Mapping_Plugin {
 		// Includes
 		require_once $this->dirname . '/includes/post.php';
 
+		$this->set_domain_page_id();
+
 		// Actions
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
@@ -40,6 +51,9 @@ class Pronamic_Domain_Mapping_Plugin {
 		add_filter( 'request', array( $this, 'request_orderby' ) );
 		
 		add_filter( 'post_type_link', array( $this, 'post_type_link' ), 10, 2 );
+
+		// WPML
+		add_filter( 'icl_set_current_language', array( $this, 'icl_set_current_language' ) );
 
 		// Admin
 		if ( is_admin() ) {
@@ -61,16 +75,13 @@ class Pronamic_Domain_Mapping_Plugin {
 	//////////////////////////////////////////////////
 
 	/**
-	 * Request
-	 * 
-	 * @param array $args
-	 * @return array
+	 * Set domain page ID based upon the HTTP host
 	 */
-	function request( $args ) {	
+	private function set_domain_page_id() {
 		global $wpdb;
-
+		
 		$host = $_SERVER['HTTP_HOST'];
-	
+		
 		$db_query = $wpdb->prepare( "
 			SELECT
 				post_id
@@ -82,15 +93,52 @@ class Pronamic_Domain_Mapping_Plugin {
 				meta_value = %s
 			;
 		", $host );
-	
-		$post_id = $wpdb->get_var( $db_query );
-	
-		if ( ! empty( $post_id) ) {
+		
+		$this->domain_page_id = $wpdb->get_var( $db_query );
+	}
+
+	//////////////////////////////////////////////////
+
+	/**
+	 * Request
+	 * 
+	 * @param array $args
+	 * @return array
+	 */
+	public function request( $args ) {	
+		if ( ! empty( $this->domain_page_id ) ) {
 			$args['post_type'] = 'any';
-			$args['p']         = $post_id;
+			$args['p']         = $this->domain_page_id;
 		}
-	
+
 		return $args;
+	}
+
+	//////////////////////////////////////////////////
+	
+	/**
+	 * WPML set current language
+	 * 
+	 * WPML has three ways of determining the current language 'language 
+	 * negotiation type':
+	 * 
+	 * 1 = Different languages in directories
+	 * 2 = A different domain per language
+	 * 3 = Language name added as a parameter
+	 * 
+	 * These methods won't work with domain pages with an domain name. Therefor
+	 * we use a custom method to determine the language of these pages.
+	 * 
+	 * @param string $langauge
+	 */
+	public function icl_set_current_language( $langauge ) {
+		if ( ! empty( $this->domain_page_id ) ) {
+			global $sitepress;
+
+			$langauge = $sitepress->get_language_for_element( $this->domain_page_id, 'post_pronamic_domain_page' );
+		}
+
+		return $langauge;
 	}
 
 	//////////////////////////////////////////////////
