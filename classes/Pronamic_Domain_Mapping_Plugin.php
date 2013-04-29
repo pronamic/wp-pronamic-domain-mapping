@@ -41,6 +41,7 @@ class Pronamic_Domain_Mapping_Plugin {
 		// Includes
 		require_once $this->dirname . '/includes/post.php';
 
+		// Determine the domain page ID
 		$this->set_domain_page_id();
 
 		// Actions
