@@ -20,6 +20,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		$this->plugin = $plugin;
 
 		// Actions
+		add_action( 'admin_menu', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
@@ -32,6 +33,24 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		add_filter( "manage_edit-{$post_type}_columns",          array( $this, 'manage_edit_columns' ) );
 		add_filter( "manage_edit-{$post_type}_sortable_columns", array( $this, 'manage_edit_sortable_columns' ) );
 		add_filter( "manage_{$post_type}_posts_custom_column",   array( $this, 'manage_posts_custom_column' ), 10, 2 );
+	}
+
+	//////////////////////////////////////////////////
+
+	/**
+	 * Admin init
+	 * 
+	 * @see http://plugins.trac.wordpress.org/browser/wordpress-mu-domain-mapping/tags/0.5.4.3/domain_mapping.php#L84
+	 */
+	function admin_init() {
+		// Maybe update
+		global $pronamic_domain_mapping_db_version;
+		
+		if ( get_option( 'pronamic_domain_mapping_db_version' ) != $pronamic_domain_mapping_db_version ) {
+			self::upgrade();
+		
+			update_option( 'pronamic_domain_mapping_db_version', $pronamic_domain_mapping_db_version );
+		}
 	}
 
 	//////////////////////////////////////////////////
@@ -120,6 +139,37 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		}
 	
 		// OK
+		$host = filter_input( INPUT_POST, '_pronamic_domain_mapping_host', FILTER_SANITIZE_STRING );
+		
+		global $wpdb;
+		
+		$result = $wpdb->delete(
+			$wpdb->pronamic_domain_posts,
+			array( 
+				'blog_id' => get_current_blog_id(),
+				'post_id' => $post_id 
+			),
+			array(
+				'blog_id' => '%d',
+				'post_id' => '%d'
+			)
+		);
+
+		$result = $wpdb->insert( 
+			$wpdb->pronamic_domain_posts,
+			array( 
+				'domain'  => $host,
+				'blog_id' => get_current_blog_id(),
+				'post_id' => $post_id 
+			),
+			array(
+				'domain'  => '%s',
+				'blog_id' => '%d',
+				'post_id' => '%d'
+			)
+		);
+
+		// Meta
 		$definition = array(
 			'_pronamic_domain_mapping_host' => FILTER_SANITIZE_STRING
 		);
@@ -204,5 +254,31 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	
 				break;
 		}
+	}
+
+	//////////////////////////////////////////////////
+
+	/**
+	 * Upgrade
+	 */
+	public function upgrade() {
+		require_once ABSPATH . '/wp-admin/includes/upgrade.php';
+		
+		$charset_collate = '';
+		if ( ! empty( $wpdb->charset ) ) {
+			$charset_collate = 'DEFAULT CHARACTER SET ' . $wpdb->charset;
+		}
+		if ( ! empty( $wpdb->collate ) ) {
+			$charset_collate .= ' COLLATE ' . $wpdb->collate;
+		}
+		
+		$query = "CREATE TABLE $wpdb->pronamic_domain_posts (
+			domain VARCHAR(200) NOT NULL,
+			blog_id BIGINT(20) NOT NULL,
+			post_id BIGINT(20) NOT NULL,
+			PRIMARY KEY  (domain)
+		) $charset_collate;";
+		
+		dbDelta( $query );
 	}
 }

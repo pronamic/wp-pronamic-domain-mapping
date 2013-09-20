@@ -39,12 +39,15 @@ class Pronamic_Domain_Mapping_Plugin {
 		$this->dirname = dirname( $file );
 
 		// Includes
+		require_once $this->dirname . '/includes/version.php';
 		require_once $this->dirname . '/includes/post.php';
 
 		// Determine the domain page ID
 		$this->set_domain_page_id();
 
 		// Actions
+		add_action( 'init', array( $this, 'init' ) );
+		
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
 		// Filters
@@ -65,6 +68,17 @@ class Pronamic_Domain_Mapping_Plugin {
 	//////////////////////////////////////////////////
 	
 	/**
+	 * Initialize
+	 */
+	function init() {
+		global $wpdb;
+		
+		$wpdb->pronamic_domain_posts = $wpdb->base_prefix . 'pronamic_domain_posts'; 
+	}
+
+	//////////////////////////////////////////////////
+	
+	/**
 	 * Plugins loaded
 	 */
 	function plugins_loaded() {
@@ -80,8 +94,13 @@ class Pronamic_Domain_Mapping_Plugin {
 	 */
 	private function set_domain_page_id() {
 		global $wpdb;
-		
-		$host = $_SERVER['HTTP_HOST'];
+		global $pronamic_domain_mapping_sunrise_host;
+
+		if ( isset( $pronamic_domain_mapping_sunrise_host ) ) {
+			$host = $pronamic_domain_mapping_sunrise_host;
+		} else {
+			$host = filter_input( INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING );
+		}
 		
 		$db_query = $wpdb->prepare( "
 			SELECT
