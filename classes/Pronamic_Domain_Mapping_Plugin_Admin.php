@@ -25,7 +25,8 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 
-		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		add_action( 'save_post',   array( $this, 'save_post' ), 10, 2 );
+		add_action( 'delete_post', array( $this, 'delete_post' ), 10, 1 );
 
 		// Post type
 		$post_type = 'pronamic_domain_page';
@@ -143,17 +144,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		
 		global $wpdb;
 		
-		$result = $wpdb->delete(
-			$wpdb->pronamic_domain_posts,
-			array( 
-				'blog_id' => get_current_blog_id(),
-				'post_id' => $post_id 
-			),
-			array(
-				'blog_id' => '%d',
-				'post_id' => '%d'
-			)
-		);
+		$this->delete_post( $post_id );
 
 		$result = $wpdb->insert( 
 			$wpdb->pronamic_domain_posts,
@@ -183,6 +174,29 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 				update_post_meta( $post_id, $key, $value );
 			}
 		}
+	}
+
+	//////////////////////////////////////////////////
+
+	/**
+	 * Delete post
+	 * 
+	 * @param string $post_id
+	 */
+	function delete_post( $post_id ) {
+		global $wpdb;
+		
+		$result = $wpdb->delete(
+			$wpdb->pronamic_domain_posts,
+			array(
+				'blog_id' => get_current_blog_id(),
+				'post_id' => $post_id
+			),
+			array(
+				'blog_id' => '%d',
+				'post_id' => '%d'
+			)
+		);
 	}
 
 	//////////////////////////////////////////////////
