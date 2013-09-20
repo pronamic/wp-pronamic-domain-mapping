@@ -35,6 +35,6 @@ $blog_host = $wpdb->get_var( $query );
 
 if ( ! empty ( $blog_host ) ) {
 	$pronamic_domain_mapping_sunrise_host = $host;
-	
+
 	$_SERVER['HTTP_HOST'] = $blog_host;
 }
