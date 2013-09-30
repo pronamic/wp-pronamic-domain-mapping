@@ -77,7 +77,7 @@ class Pronamic_Domain_Mapping_Plugin {
 		
 		if ( ! empty( $this->domain_page_id ) ) {
 			// Google Analytics for WordPress
-			// https://github.com/Yoast/google-analytics-for-wordpress
+			// @see https://github.com/Yoast/google-analytics-for-wordpress
 			global $yoast_ga;
 			
 			if ( isset( $yoast_ga ) ) {
