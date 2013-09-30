@@ -70,10 +70,28 @@ class Pronamic_Domain_Mapping_Plugin {
 	/**
 	 * Initialize
 	 */
-	function init() {
+	public function init() {
 		global $wpdb;
 		
-		$wpdb->pronamic_domain_posts = $wpdb->base_prefix . 'pronamic_domain_posts'; 
+		$wpdb->pronamic_domain_posts = $wpdb->base_prefix . 'pronamic_domain_posts';
+		
+		if ( ! empty( $this->domain_page_id ) ) {
+			// Google Analytics for WordPress
+			// https://github.com/Yoast/google-analytics-for-wordpress
+			global $yoast_ga;
+			
+			if ( isset( $yoast_ga ) ) {
+				$ga_ua = get_post_meta( $this->domain_page_id, '_pronamic_domain_mapping_ga_ua', true );
+
+				if ( ! empty( $ga_ua ) ) {
+					$yoast_ga->options['uastring'] = $ga_ua;
+				}
+			}
+
+			// WordPress SEO by Yoast
+			// @see https://github.com/Yoast/wordpress-seo
+			add_action( 'wpseo_head', array( $this, 'wpseo_head' ), 90 );
+		}
 	}
 
 	//////////////////////////////////////////////////
@@ -81,7 +99,7 @@ class Pronamic_Domain_Mapping_Plugin {
 	/**
 	 * Plugins loaded
 	 */
-	function plugins_loaded() {
+	public function plugins_loaded() {
 		$plugin_rel_path = dirname( plugin_basename( $this->file ) ) . '/languages/';
 
 		load_plugin_textdomain( 'pronamic_domain_mapping', false, $plugin_rel_path );
@@ -202,5 +220,57 @@ class Pronamic_Domain_Mapping_Plugin {
 		}
 	
 		return $link;
+	}
+
+	//////////////////////////////////////////////////
+	
+	/**
+	 * WordPress SEO by Yoast head
+	 * 
+	 * @see https://github.com/Yoast/wordpress-seo/blob/b4c0e52e02cd850e753412f4e9a435b509df360f/frontend/class-frontend.php#L481
+	 */
+	public function wpseo_head() {
+		global $wpseo_front;
+
+		if ( isset( $wpseo_front ) && ! empty( $this->domain_page_id ) ) {
+			if ( ! empty( $wpseo_front->options['googleverify'] ) ) {
+				$google_meta = $wpseo_front->options['googleverify'];
+				if ( strpos( $google_meta, 'content' ) ) {
+					preg_match( '`content="([^"]+)"`', $google_meta, $match );
+					$google_meta = $match[1];
+				}
+
+				printf(
+					'<meta name="google-site-verification" content="%s" />',
+					esc_attr( $google_meta )
+				);
+
+				echo "\n";
+			}
+			
+			if ( ! empty( $wpseo_front->options['msverify'] ) ) {
+				$bing_meta = $wpseo_front->options['msverify'];
+				if ( strpos( $bing_meta, 'content' ) ) {
+					preg_match( '`content="([^"]+)"`', $bing_meta, $match );
+					$bing_meta = $match[1];
+				}
+
+				printf(
+					'<meta name="msvalidate.01" content="%s" />',
+					esc_attr( $bing_meta )
+				);
+
+				echo "\n";
+			}
+			
+			if ( ! empty( $wpseo_front->options['alexaverify'] ) ) {
+				printf(
+					'<meta name="alexaVerifyID" content="%s" />',
+					esc_attr( $wpseo_front->options['alexaverify'] )
+				);
+
+				echo "\n";
+			}
+		}
 	}
 }

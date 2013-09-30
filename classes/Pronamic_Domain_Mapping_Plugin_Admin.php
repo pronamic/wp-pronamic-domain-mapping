@@ -162,7 +162,8 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 		// Meta
 		$definition = array(
-			'_pronamic_domain_mapping_host' => FILTER_SANITIZE_STRING
+			'_pronamic_domain_mapping_host'  => FILTER_SANITIZE_STRING,
+			'_pronamic_domain_mapping_ga_ua' => FILTER_SANITIZE_STRING
 		);
 	
 		$data = filter_input_array( INPUT_POST, $definition );
@@ -221,6 +222,8 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	
 		$new_columns['pronamic_domain_mapping_host'] = __( 'Domain Name', 'pronamic_domain_mapping' );
 	
+		$new_columns['pronamic_domain_mapping_ga'] = __( 'Google Analytics', 'pronamic_domain_mapping' );
+	
 		if( isset( $columns['author'] ) ) {
 			$new_columns['author'] = $columns['author'];
 		}
@@ -265,6 +268,12 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 				$url = 'http://' . $host . '/';
 	
 				echo '<a href="' . $url . '">' . $host. '</a>';
+	
+				break;
+			case "pronamic_domain_mapping_ga":
+				$ga_ua = get_post_meta( $post_id, '_pronamic_domain_mapping_ga_ua', true);
+				
+				echo $ga_ua;
 	
 				break;
 		}
