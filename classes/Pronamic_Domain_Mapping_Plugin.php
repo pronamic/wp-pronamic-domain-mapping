@@ -50,6 +50,8 @@ class Pronamic_Domain_Mapping_Plugin {
 		
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
+		add_action( 'send_headers', array( $this, 'send_headers' ) );
+
 		// Filters
 		add_filter( 'request', array( $this, 'request' ), 1 );
 		add_filter( 'request', array( $this, 'request_orderby' ) );
@@ -103,6 +105,25 @@ class Pronamic_Domain_Mapping_Plugin {
 		$plugin_rel_path = dirname( plugin_basename( $this->file ) ) . '/languages/';
 
 		load_plugin_textdomain( 'pronamic_domain_mapping', false, $plugin_rel_path );
+	}
+
+	//////////////////////////////////////////////////
+	
+	/**
+	 * Send headers
+	 */
+	public function send_headers() {
+		if ( ! empty( $this->domain_page_id ) ) {
+			// Access-Control-Allow-Origin
+			// @see http://stackoverflow.com/a/4110601
+			$url = get_site_url();
+
+			$host = parse_url( $url, PHP_URL_HOST );
+			
+			if ( $host !== false ) {
+				header( 'Access-Control-Allow-Origin: '. $host );
+			}
+		}
 	}
 
 	//////////////////////////////////////////////////
