@@ -87,6 +87,8 @@ class Pronamic_Domain_Mapping_Plugin {
 
 				if ( ! empty( $ga_ua ) ) {
 					$yoast_ga->options['uastring'] = $ga_ua;
+					$yoast_ga->options['trackcrossdomain'] = false;
+					$yoast_ga->options['primarycrossdomain'] = false;
 				}
 			}
 
