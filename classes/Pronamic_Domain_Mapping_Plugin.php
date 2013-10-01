@@ -140,7 +140,7 @@ class Pronamic_Domain_Mapping_Plugin {
 		if ( isset( $pronamic_domain_mapping_sunrise_host ) ) {
 			$host = $pronamic_domain_mapping_sunrise_host;
 		} else {
-			$host = filter_input( INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING );
+			$host = $_SERVER['HTTP_HOST'];
 		}
 		
 		$db_query = $wpdb->prepare( "
