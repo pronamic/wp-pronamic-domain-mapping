@@ -13,7 +13,7 @@ global $wpdb;
 $wpdb->pronamic_domain_posts = $wpdb->base_prefix . 'pronamic_domain_posts';
 
 // Host
-$host = filter_input( INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING );
+$host = $_SERVER['HTTP_HOST'];
 
 // Query
 $query = "
