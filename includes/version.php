@@ -6,7 +6,7 @@
 */
 global $pronamic_domain_mapping_version;
 
-$pronamic_domain_mapping_version = '1.0.0';
+$pronamic_domain_mapping_version = '1.0.1';
 
 /**
 * Holds the Pronamic Domain Mapping DB revision, increments when changes are made to the Pronamic Domain Mapping DB schema.
@@ -15,4 +15,4 @@ $pronamic_domain_mapping_version = '1.0.0';
 */
 global $pronamic_domain_mapping_db_version;
 
-$pronamic_domain_mapping_db_version = 100;
+$pronamic_domain_mapping_db_version = 101;
