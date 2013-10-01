@@ -47,6 +47,11 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 == Changelog ==
 
+= 1.0.0 =
+*	Added support for WordPress network/multisite installations
+*	Added support for the [WordPress SEO by Yoast](http://wordpress.org/plugins/wordpress-seo/) plugin
+*	Added support for the [Google Analytics for WordPress](http://wordpress.org/plugins/google-analytics-for-wordpress/) plugin
+
 = 0.1.3 =
 *	Added support for The WordPress Multilingual Plugin (http://wpml.org/)
 
@@ -61,6 +66,9 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 
 == Upgrade Notice ==
+
+= 1.0.0 =
+Thanks for using the Pronamic Domain Mapping plugin! As always, this update is very strongly recommended.
 
 = 0.1.3 =
 Thanks for using the Pronamic Domain Mapping plugin! As always, this update is very strongly recommended.
