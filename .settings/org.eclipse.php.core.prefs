@@ -1,5 +1,2 @@
 eclipse.preferences.version=1
-include_path=0;/pronamic-domain-mapping
-phpVersion=php5.3
-useShortTags=false
-use_asp_tags_as_php=false
+include_path=0;/wp-pronamic-domain-mapping
