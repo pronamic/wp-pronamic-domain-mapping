@@ -56,6 +56,12 @@ class Pronamic_Domain_Mapping_Plugin {
 		add_filter( 'request', array( $this, 'request' ), 1 );
 		add_filter( 'request', array( $this, 'request_orderby' ) );
 
+		// Links
+		// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/link-template.php#L138-L143
+
+		// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/link-template.php#L324-L333
+		add_filter( 'page_link', array( $this, 'page_link' ), 10, 2 );
+		// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/link-template.php#L275-L285
 		add_filter( 'post_type_link', array( $this, 'post_type_link' ), 10, 2 );
 
 		// WPML
@@ -223,6 +229,16 @@ class Pronamic_Domain_Mapping_Plugin {
 	}
 
 	//////////////////////////////////////////////////
+
+	/**
+	 * Page link
+	 *
+	 * @param string $link
+	 * @param int $post_id
+	 */
+	public function page_link( $link, $post_id ) {
+		return $this->post_type_link( $link, get_post( $post_id ) );
+	}
 
 	/**
 	 * Link
