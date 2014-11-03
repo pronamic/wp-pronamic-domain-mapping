@@ -107,6 +107,27 @@ class Pronamic_Domain_Mapping_Plugin {
 	//////////////////////////////////////////////////
 
 	/**
+	 * Option Yoast Google Analytics
+	 * 
+	 * @param $options
+	 * @return array
+	 */
+	public function option_yst_ga( $options ) {
+		if ( is_array( $options ) && isset( $options['ga_general'] ) ) {
+			$ga_ua = get_post_meta( $this->domain_page_id, '_pronamic_domain_mapping_ga_ua', true );
+
+			if ( ! empty( $ga_ua ) ) {
+				$options['ga_general']['manual_ua_code']       = true;
+				$options['ga_general']['manual_ua_code_field'] = $ga_ua;
+			}
+		}
+
+		return $options;
+	}
+
+	//////////////////////////////////////////////////
+
+	/**
 	 * Plugins loaded
 	 */
 	public function plugins_loaded() {
@@ -162,6 +183,10 @@ class Pronamic_Domain_Mapping_Plugin {
 		", $host );
 
 		$this->domain_page_id = $wpdb->get_var( $db_query );
+
+		if ( ! empty( $this->domain_page_id ) ) {
+			add_filter( 'option_yst_ga', array( $this, 'option_yst_ga' ) );
+		}
 	}
 
 	//////////////////////////////////////////////////
