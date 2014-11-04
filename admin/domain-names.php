@@ -11,12 +11,12 @@
 		'meta_query' => array(
 			array(
 				'key'     => '_pronamic_domain_mapping_host',
-				'compare' => 'EXISTS'
-			)
+				'compare' => 'EXISTS',
+			),
 		),
 		'order'      => 'ASC',
 		'orderby'    => 'meta_value',
-		'meta_key'   => '_pronamic_domain_mapping_host'
+		'meta_key'   => '_pronamic_domain_mapping_host',
 	) );
 
 	?>
@@ -24,7 +24,7 @@
 	<ul class="subsubsub">
 		<li class="all">
 			<a class="current" href="">
-				<?php _e( 'All', 'pronamic_domain_mapping' ); ?> <span class="count">(<?php echo $query->found_posts; ?>)</span>
+				<?php _e( 'All', 'pronamic_domain_mapping' ); ?> <span class="count">(<?php echo esc_html( $query->found_posts ); ?>)</span>
 			</a>
 		</li>
 	</ul>
@@ -45,13 +45,13 @@
 					<td>
 						<strong>
 							<a href="<?php the_permalink(); ?>">
-								<?php echo get_post_meta( $post->ID, '_pronamic_domain_mapping_host', true ); ?>
+								<?php echo esc_html( get_post_meta( $post->ID, '_pronamic_domain_mapping_host', true ) ); ?>
 							</a>
 						</strong>
 
 						<div class="row-actions">
 							<span class="edit">
-								<a href="<?php echo get_edit_post_link( $post->ID ); ?>"><?php _e( 'Edit', 'pronamic_domain_mapping' ); ?></a> |
+								<a href="<?php echo esc_attr( get_edit_post_link( $post->ID ) ); ?>"><?php _e( 'Edit', 'pronamic_domain_mapping' ); ?></a> |
 							</span>
 
 							<span class="view">
