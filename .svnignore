@@ -1,8 +1,0 @@
-.settings
-.buildpath
-.project
-
-bin
-tests
-phpunit.xml
-.travis.yml

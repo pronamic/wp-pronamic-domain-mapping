@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="Pronamic Domain Mapping">
+	<description>A custom set of rules to check for the Pronamic Domain Mapping WordPress plugin.</description>
+
+	<rule ref="WordPress">
+		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		
+		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
+		<exclude name="WordPress.VIP.PostsPerPage.posts_per_page" />
+		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query" />
+		<exclude name="WordPress.VIP.ValidatedSanitizedInput" />
+	</rule>
+</ruleset>
