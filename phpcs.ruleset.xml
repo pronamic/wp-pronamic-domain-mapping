@@ -3,6 +3,10 @@
 	<description>A custom set of rules to check for the Pronamic Domain Mapping WordPress plugin.</description>
 
 	<rule ref="WordPress">
+		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 		
+		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
+		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query" />
+		<exclude name="WordPress.VIP.ValidatedSanitizedInput" />
 	</rule>
 </ruleset>

@@ -30,7 +30,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 		// Post type
 		$post_type = 'pronamic_domain_page';
-		
+
 		add_filter( "manage_edit-{$post_type}_columns",          array( $this, 'manage_edit_columns' ) );
 		add_filter( "manage_edit-{$post_type}_sortable_columns", array( $this, 'manage_edit_sortable_columns' ) );
 		add_filter( "manage_{$post_type}_posts_custom_column",   array( $this, 'manage_posts_custom_column' ), 10, 2 );
@@ -40,16 +40,16 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 	/**
 	 * Admin init
-	 * 
+	 *
 	 * @see http://plugins.trac.wordpress.org/browser/wordpress-mu-domain-mapping/tags/0.5.4.3/domain_mapping.php#L84
 	 */
 	function admin_init() {
 		// Maybe update
 		global $pronamic_domain_mapping_db_version;
-		
+
 		if ( get_option( 'pronamic_domain_mapping_db_version' ) != $pronamic_domain_mapping_db_version ) {
 			self::upgrade();
-		
+
 			update_option( 'pronamic_domain_mapping_db_version', $pronamic_domain_mapping_db_version );
 		}
 	}
@@ -88,7 +88,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 */
 	function add_meta_boxes() {
 		$post_types = get_post_types( '', 'names' );
-	
+
 		foreach ( $post_types as $post_type ) {
 			if ( post_type_supports( $post_type, 'pronamic_domain_mapping' ) ) {
 				add_meta_box(
@@ -107,7 +107,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 	/**
 	 * Details meta box
-	 * 
+	 *
 	 * @param WP_Post $post
 	 */
 	function details_meta_box( $post ) {
@@ -118,7 +118,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 	/**
 	 * Save post
-	 * 
+	 *
 	 * @param string $post_id
 	 * @param WP_Post $post
 	 */
@@ -127,47 +127,47 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
 		}
-	
+
 		// Verify nonce
 		$nonce = filter_input( INPUT_POST, 'pronamic_domain_mapping_meta_box_nonce', FILTER_SANITIZE_STRING );
 		if ( ! wp_verify_nonce( $nonce, 'pronamic_domain_mapping_save' ) ) {
 			return;
 		}
-	
+
 		// Check permissions
 		if ( ! ( post_type_supports( $post->post_type, 'pronamic_domain_mapping' ) && current_user_can( 'edit_post', $post_id ) ) ) {
 			return;
 		}
-	
+
 		// OK
 		$host = filter_input( INPUT_POST, '_pronamic_domain_mapping_host', FILTER_SANITIZE_STRING );
-		
+
 		global $wpdb;
-		
+
 		$this->delete_post( $post_id );
 
-		$result = $wpdb->insert( 
+		$result = $wpdb->insert(
 			$wpdb->pronamic_domain_posts,
-			array( 
+			array(
 				'domain'  => $host,
 				'blog_id' => get_current_blog_id(),
-				'post_id' => $post_id 
+				'post_id' => $post_id,
 			),
 			array(
 				'domain'  => '%s',
 				'blog_id' => '%d',
-				'post_id' => '%d'
+				'post_id' => '%d',
 			)
 		);
 
 		// Meta
 		$definition = array(
 			'_pronamic_domain_mapping_host'  => FILTER_SANITIZE_STRING,
-			'_pronamic_domain_mapping_ga_ua' => FILTER_SANITIZE_STRING
+			'_pronamic_domain_mapping_ga_ua' => FILTER_SANITIZE_STRING,
 		);
-	
+
 		$data = filter_input_array( INPUT_POST, $definition );
-	
+
 		foreach ( $data as $key => $value ) {
 			if ( empty( $value ) ) {
 				delete_post_meta( $post_id, $key );
@@ -181,21 +181,21 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 	/**
 	 * Delete post
-	 * 
+	 *
 	 * @param string $post_id
 	 */
 	function delete_post( $post_id ) {
 		global $wpdb;
-		
+
 		$result = $wpdb->delete(
 			$wpdb->pronamic_domain_posts,
 			array(
 				'blog_id' => get_current_blog_id(),
-				'post_id' => $post_id
+				'post_id' => $post_id,
 			),
 			array(
 				'blog_id' => '%d',
-				'post_id' => '%d'
+				'post_id' => '%d',
 			)
 		);
 	}
@@ -209,33 +209,33 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 */
 	function manage_edit_columns( $columns ) {
 		$new_columns = array();
-	
-		if( isset( $columns['cb'] ) ) {
+
+		if ( isset( $columns['cb'] ) ) {
 			$new_columns['cb'] = $columns['cb'];
 		}
-	
+
 		// $new_columns['thumbnail'] = __('Thumbnail', 'pronamic_companies');
-	
-		if( isset( $columns['title'] ) ) {
+
+		if ( isset( $columns['title'] ) ) {
 			$new_columns['title'] = $columns['title'];
 		}
-	
+
 		$new_columns['pronamic_domain_mapping_host'] = __( 'Domain Name', 'pronamic_domain_mapping' );
-	
+
 		$new_columns['pronamic_domain_mapping_ga'] = __( 'Google Analytics', 'pronamic_domain_mapping' );
-	
-		if( isset( $columns['author'] ) ) {
+
+		if ( isset( $columns['author'] ) ) {
 			$new_columns['author'] = $columns['author'];
 		}
-	
-		if( isset( $columns['comments'] ) ) {
+
+		if ( isset( $columns['comments'] ) ) {
 			$new_columns['comments'] = $columns['comments'];
 		}
-	
-		if( isset( $columns['date'] ) ) {
+
+		if ( isset( $columns['date'] ) ) {
 			$new_columns['date'] = $columns['date'];
 		}
-	
+
 		return array_merge( $new_columns, $columns );
 	}
 
@@ -243,13 +243,13 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 	/**
 	 * Manage edit sortable columns
-	 * 
+	 *
 	 * @param array $columns
 	 * @return array
 	 */
 	function manage_edit_sortable_columns( $columns ) {
 		$columns['pronamic_domain_mapping_host'] = 'pronamic_domain_mapping_host';
-	
+
 		return $columns;
 	}
 
@@ -257,24 +257,28 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 	/**
 	 * Manage posts custom column
-	 * 
+	 *
 	 * @param string $column
 	 * @param string $post_id
 	 */
 	function manage_posts_custom_column( $column, $post_id ) {
 		switch ( $column ) {
-			case "pronamic_domain_mapping_host":
-				$host = get_post_meta( $post_id, '_pronamic_domain_mapping_host', true);
+			case 'pronamic_domain_mapping_host' :
+				$host = get_post_meta( $post_id, '_pronamic_domain_mapping_host', true );
 				$url = 'http://' . $host . '/';
-	
-				echo '<a href="' . $url . '">' . $host. '</a>';
-	
+
+				printf(
+					'<a href="%s">%s</a>',
+					esc_attr( $url ),
+					esc_html( $host )
+				);
+
 				break;
-			case "pronamic_domain_mapping_ga":
-				$ga_ua = get_post_meta( $post_id, '_pronamic_domain_mapping_ga_ua', true);
-				
-				echo $ga_ua;
-	
+			case 'pronamic_domain_mapping_ga' :
+				$ga_ua = get_post_meta( $post_id, '_pronamic_domain_mapping_ga_ua', true );
+
+				echo esc_html( $ga_ua );
+
 				break;
 		}
 	}
@@ -286,7 +290,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 */
 	public function upgrade() {
 		require_once ABSPATH . '/wp-admin/includes/upgrade.php';
-		
+
 		$charset_collate = '';
 		if ( ! empty( $wpdb->charset ) ) {
 			$charset_collate = 'DEFAULT CHARACTER SET ' . $wpdb->charset;
@@ -294,14 +298,14 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		if ( ! empty( $wpdb->collate ) ) {
 			$charset_collate .= ' COLLATE ' . $wpdb->collate;
 		}
-		
+
 		$query = "CREATE TABLE $wpdb->pronamic_domain_posts (
 			domain VARCHAR(200) NOT NULL,
 			blog_id BIGINT(20) NOT NULL,
 			post_id BIGINT(20) NOT NULL,
 			PRIMARY KEY  (domain)
 		) $charset_collate;";
-		
+
 		dbDelta( $query );
 	}
 }

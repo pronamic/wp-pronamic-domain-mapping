@@ -129,7 +129,7 @@ class Pronamic_Domain_Mapping_Plugin {
 
 			$host = parse_url( $url, PHP_URL_HOST );
 
-			if ( $host !== false ) {
+			if ( false !== $host ) {
 				header( 'Access-Control-Allow-Origin: '. $host );
 			}
 		}
@@ -175,7 +175,7 @@ class Pronamic_Domain_Mapping_Plugin {
 
 	/**
 	 * Option Yoast Google Analytics
-	 * 
+	 *
 	 * @version > 5.0
 	 * @param $options
 	 * @return array
@@ -250,7 +250,7 @@ class Pronamic_Domain_Mapping_Plugin {
 		if ( isset( $args['orderby'] ) && 'pronamic_domain_mapping_host' == $args['orderby'] ) {
 			$args = array_merge( $args, array(
 				'meta_key' => '_pronamic_domain_mapping_host',
-				'orderby'  => 'meta_value'
+				'orderby'  => 'meta_value',
 			) );
 		}
 

@@ -2,9 +2,9 @@
 
 /**
  * Sunrise
- * 
+ *
  * @see https://github.com/WordPress/WordPress/blob/3.6.1/wp-includes/ms-settings.php#L17
- * 
+ *
  * @see http://plugins.trac.wordpress.org/browser/wordpress-mu-domain-mapping/tags/0.5.4.3/sunrise.php
  */
 global $wpdb;
@@ -33,7 +33,7 @@ $query = $wpdb->prepare( $query, $host );
 
 $blog_host = $wpdb->get_var( $query );
 
-if ( ! empty ( $blog_host ) ) {
+if ( ! empty( $blog_host ) ) {
 	$pronamic_domain_mapping_sunrise_host = $host;
 
 	$_SERVER['HTTP_HOST'] = $blog_host;
