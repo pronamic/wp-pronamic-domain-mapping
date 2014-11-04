@@ -78,7 +78,7 @@ module.exports = function( grunt ) {
 					'!.*/**',
 					'!Gruntfile.js',
 					'!package.json',
-					'!project.ruleset.xml',
+					'!phpcs.ruleset.xml',
 					'!node_modules/**',
 					'!wp-svn/**'
 				],
