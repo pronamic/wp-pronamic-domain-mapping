@@ -43,7 +43,7 @@ module.exports = function( grunt ) {
 		checkwpversion: {
 			options: {
 				readme: 'readme.txt',
-				plugin: 'pronamic-google-maps.php',
+				plugin: 'pronamic-domain-mapping.php',
 			},
 			check: {
 				version1: 'plugin',
@@ -99,7 +99,7 @@ module.exports = function( grunt ) {
 		rt_wp_deploy: {
 			app: {
 				options: {
-					svnUrl: 'http://plugins.svn.wordpress.org/pronamic-google-maps/',
+					svnUrl: 'http://plugins.svn.wordpress.org/pronamic-domain-mapping/',
 					svnDir: 'wp-svn',
 					svnUsername: 'pronamic',
 					deployDir: 'deploy',

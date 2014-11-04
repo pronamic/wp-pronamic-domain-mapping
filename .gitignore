@@ -1,3 +1,6 @@
+# Deploy
+/deploy/
+
 # Eclipse
 /.buildpath
 /.project
@@ -5,3 +8,6 @@
 
 # Node.js
 /node_modules/
+
+# WordPress SVN
+/wp-svn/
