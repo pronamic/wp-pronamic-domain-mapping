@@ -3,7 +3,7 @@ Contributors: pronamic, remcotolsma
 Tags: domain, mapping, landingpage, landingspage, page, dns, map, seo
 Donate link: http://pronamic.eu/donate/?for=wp-plugin-pronamic-domain-mapping&source=wp-plugin-readme-txt
 Requires at least: 3.2
-Tested up to: 3.6.1
+Tested up to: 4.0
 Stable tag: 1.1.0
 License: GPLv2 or later
 
