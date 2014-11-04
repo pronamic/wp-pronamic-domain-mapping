@@ -85,6 +85,7 @@ class Pronamic_Domain_Mapping_Plugin {
 
 		if ( ! empty( $this->domain_page_id ) ) {
 			// Google Analytics for WordPress
+			// @version < 5.0
 			// @see https://github.com/Yoast/google-analytics-for-wordpress
 			global $yoast_ga;
 
@@ -102,27 +103,6 @@ class Pronamic_Domain_Mapping_Plugin {
 			// @see https://github.com/Yoast/wordpress-seo
 			add_action( 'wpseo_head', array( $this, 'wpseo_head' ), 90 );
 		}
-	}
-
-	//////////////////////////////////////////////////
-
-	/**
-	 * Option Yoast Google Analytics
-	 * 
-	 * @param $options
-	 * @return array
-	 */
-	public function option_yst_ga( $options ) {
-		if ( is_array( $options ) && isset( $options['ga_general'] ) ) {
-			$ga_ua = get_post_meta( $this->domain_page_id, '_pronamic_domain_mapping_ga_ua', true );
-
-			if ( ! empty( $ga_ua ) ) {
-				$options['ga_general']['manual_ua_code']       = true;
-				$options['ga_general']['manual_ua_code_field'] = $ga_ua;
-			}
-		}
-
-		return $options;
 	}
 
 	//////////////////////////////////////////////////
@@ -185,8 +165,32 @@ class Pronamic_Domain_Mapping_Plugin {
 		$this->domain_page_id = $wpdb->get_var( $db_query );
 
 		if ( ! empty( $this->domain_page_id ) ) {
+			// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/option.php#L112-L123
+			// @see https://github.com/Yoast/google-analytics-for-wordpress/blob/5.1/includes/class-options.php#L9-L14
 			add_filter( 'option_yst_ga', array( $this, 'option_yst_ga' ) );
 		}
+	}
+
+	//////////////////////////////////////////////////
+
+	/**
+	 * Option Yoast Google Analytics
+	 * 
+	 * @version > 5.0
+	 * @param $options
+	 * @return array
+	 */
+	public function option_yst_ga( $options ) {
+		if ( is_array( $options ) && isset( $options['ga_general'] ) ) {
+			$ga_ua = get_post_meta( $this->domain_page_id, '_pronamic_domain_mapping_ga_ua', true );
+
+			if ( ! empty( $ga_ua ) ) {
+				$options['ga_general']['manual_ua_code']       = true;
+				$options['ga_general']['manual_ua_code_field'] = $ga_ua;
+			}
+		}
+
+		return $options;
 	}
 
 	//////////////////////////////////////////////////
