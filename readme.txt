@@ -40,16 +40,15 @@ To actually visit the just added domain name page, you need to make sure the dom
 = Creating a Domain Alias in Plesk =
 
 1. Login to the Plesk control panel
-2. Run the **Add New Domain Alias** wizard in the **Websites & Domains** tab
-3. Specify the domain for which you are creating an alias (the *primary domain*) and the alias’s domain name
+2. Run the "Add New Domain Alias" wizard in the "Websites & Domains" tab
+3. Specify the domain for which you are creating an alias (the primary domain) and the alias’s domain name
 4. Make sure the web service is enabled for the domain alias
 5. The domain name page should now be shown when you visit the domain alias, but it might take up to 24 hours for changes to take effect.
 
 = Creating a Domain Pointer in DirectAdmin =
 1. Login to the DirectAdmin control panel
-2. Click on the "Advanced Tools" icon from the main control panel menu
-3. Click the "Domain Pointers" icon
-4. Specify the domain for which you are creating a pointer (the *primary domain*) and the pointer’s domain name
+2. Go to "Domain Pointers" in the "Advanced Features" section
+4. Specify the domain for which you are creating a pointer (the primary domain) and the pointer’s domain name
 5. The domain name page should now be shown when you visit the domain pointer, but it might take up to 24 hours for changes to take effect.
 
 If you are unable to visit the domain page after you've configured the domain correctly in the control panel of your host, make sure that the name servers for the new domain are the same as the name servers of the primary domain.
