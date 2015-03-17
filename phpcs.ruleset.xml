@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <ruleset name="Pronamic Domain Mapping">
-	<description>A custom set of rules to check for the Pronamic Domain Mapping WordPress plugin.</description>
+	<exclude-pattern>/deploy/</exclude-pattern>
+	<exclude-pattern>/node_modules/</exclude-pattern>
+	<exclude-pattern>/wp-svn/</exclude-pattern>
 
 	<rule ref="WordPress">
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />

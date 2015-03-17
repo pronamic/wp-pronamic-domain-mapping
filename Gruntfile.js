@@ -16,7 +16,7 @@ module.exports = function( grunt ) {
 		// PHP Code Sniffer
 		phpcs: {
 			application: {
-				dir: [ './' ],
+				src: [ '**/*.php' ],
 			},
 			options: {
 				standard: 'phpcs.ruleset.xml',
