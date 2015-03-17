@@ -74,25 +74,44 @@ module.exports = function( grunt ) {
 			deploy: {
 				src: [
 					'**',
-					'!.*',
-					'!.*/**',
+					'!composer.json',
+					'!composer.lock',
 					'!Gruntfile.js',
 					'!package.json',
+					'!phpunit.xml',
+					'!phpunit.xml.dist',
 					'!phpcs.ruleset.xml',
+					'!CHANGELOG.md',
+					'!README.md',
+					'!deploy/**',
+					'!documentation/**',
 					'!node_modules/**',
-					'!wp-svn/**'
+					'!tests/**',
+					'!wp-content/**',
 				],
-				dest: 'deploy',
-				expand: true,
-				dot: true
+				dest: 'deploy/latest',
+				expand: true
 			},
 		},
 
 		// Clean
 		clean: {
 			deploy: {
-				src: [ 'deploy' ]
+				src: [ 'deploy/latest' ]
 			},
+		},
+
+		// Compress
+		compress: {
+			deploy: {
+				options: {
+					archive: 'deploy/archives/<%= pkg.name %>.<%= pkg.version %>.zip'
+				},
+				expand: true,
+				cwd: 'deploy/latest',
+				src: ['**/*'],
+				dest: '<%= pkg.name %>/'
+			}
 		},
 
 		// WordPress deploy
@@ -107,30 +126,78 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
+
+		// Git checkout
+		gitcheckout: {
+			tag: {
+				options: {
+					branch: 'tags/<%= pkg.version %>'
+				}
+			},
+			develop: {
+				options: {
+					branch: 'develop'
+				}
+			}
+		},
+
+		// S3
+		aws_s3: {
+			options: {
+				region: 'eu-central-1'
+			},
+			deploy: {
+				options: {
+					bucket: 'downloads.pronamic.eu',
+					differential: true
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'deploy/archives/',
+						src: '<%= pkg.name %>.<%= pkg.version %>.zip',
+						dest: 'plugins/<%= pkg.name %>/'
+					}
+				]
+			}
+		}
 	} );
 
 	grunt.loadNpmTasks( 'grunt-phplint' );
 	grunt.loadNpmTasks( 'grunt-phpcs' );
 	grunt.loadNpmTasks( 'grunt-contrib-clean' );
+	grunt.loadNpmTasks( 'grunt-contrib-compress' );
 	grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-checkwpversion' );
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-shell' );
 	grunt.loadNpmTasks( 'grunt-rt-wp-deploy' );
+	grunt.loadNpmTasks( 'grunt-git' );
+	grunt.loadNpmTasks( 'grunt-aws-s3' );
 
 	// Default task(s).
 	grunt.registerTask( 'default', [ 'jshint', 'phplint', 'phpcs', 'checkwpversion' ] );
 	grunt.registerTask( 'pot', [ 'makepot' ] );
 
 	grunt.registerTask( 'deploy', [
-		'checkwpversion',
+		'default',
 		'clean:deploy',
-		'copy:deploy'
+		'copy:deploy',
+		'compress:deploy'
 	] );
 
 	grunt.registerTask( 'wp-deploy', [
+		'gitcheckout:tag',
 		'deploy',
-		'rt_wp_deploy'
+		'rt_wp_deploy',
+		'gitcheckout:develop'
+	] );
+	
+	grunt.registerTask( 's3-deploy', [
+		'gitcheckout:tag',
+		'deploy',
+		'aws_s3:deploy',
+		'gitcheckout:develop'
 	] );
 };
