@@ -35,7 +35,7 @@ if ( is_readable( $file ) ) {
 3. Create a new domain name page by clicking **Add New** in the **Domain Name Pages** menu
 4. Enter the domain for which this page should be shown in the field **Domain Name**
 
-To actually visit the just added domain name page, you need to make sure the domain is configured to show your WordPress site. To test the domain name page, just visited the domain for which you're creating the domain name page. If you don't see the domain name page, follow the instructions below if your host uses either the Plesk or DirectAdmin control panel to link the domain to your main domain (which is running the WordPress installation).
+To actually visit the just added domain name page, you need to make sure the domain is configured to show your WordPress site. To test the domain name page, just visit the domain for which you're creating the domain name page. If you don't see the domain name page, follow the instructions below if your host uses either the Plesk or DirectAdmin control panel to link the domain to your main domain (which is running the WordPress installation).
 
 = Creating a Domain Alias in Plesk =
 
