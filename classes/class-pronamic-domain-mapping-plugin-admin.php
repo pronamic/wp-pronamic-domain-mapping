@@ -66,7 +66,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 			"edit.php?post_type={$post_type}", // parent_slug
 			__( 'Domain Names', 'pronamic_domain_mapping' ), // page_title
 			__( 'Domain Names', 'pronamic_domain_mapping' ), // menu_title
-			'read', // capability
+			'manage_options', // capability
 			'pronamic_domain_mapping_names', // menu_slug
 			array( $this, 'page_domain_names' ) // function
 		);
