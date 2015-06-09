@@ -3,8 +3,8 @@ Contributors: pronamic, remcotolsma
 Tags: domain, mapping, landingpage, landingspage, page, dns, map, seo
 Donate link: http://pronamic.eu/donate/?for=wp-plugin-pronamic-domain-mapping&source=wp-plugin-readme-txt
 Requires at least: 3.2
-Tested up to: 3.6.1
-Stable tag: 1.1.0
+Tested up to: 4.2.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 
 The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.
@@ -30,8 +30,28 @@ if ( is_readable( $file ) ) {
 
 == Installation ==
 
-Extract the zip file and just drop the contents in the wp-content/plugins/ directory of your
-WordPress installation and then activate the Plugin from Plugins page.
+1. Extract the ZIP-file and upload the contents to the **/wp-content/plugins/** directory of your WordPress installation
+2. Activate the plugin from the *Plugins* page
+3. Create a new domain name page by clicking **Add New** in the **Domain Name Pages** menu
+4. Enter the domain for which this page should be shown in the field **Domain Name**
+
+To actually visit the just added domain name page, you need to make sure the domain is configured to show your WordPress site. To test the domain name page, just visit the domain for which you're creating the domain name page. If you don't see the domain name page, follow the instructions below if your host uses either the Plesk or DirectAdmin control panel to link the domain to your main domain (which is running the WordPress installation).
+
+= Creating a Domain Alias in Plesk =
+
+1. Login to the Plesk control panel
+2. Run the "Add New Domain Alias" wizard in the "Websites & Domains" tab
+3. Specify the domain for which you are creating an alias (the primary domain) and the alias’s domain name
+4. Make sure the web service is enabled for the domain alias
+5. The domain name page should now be shown when you visit the domain alias, but it might take up to 24 hours for changes to take effect.
+
+= Creating a Domain Pointer in DirectAdmin =
+1. Login to the DirectAdmin control panel
+2. Go to "Domain Pointers" in the "Advanced Features" section
+4. Specify the domain for which you are creating a pointer (the primary domain) and the pointer’s domain name
+5. The domain name page should now be shown when you visit the domain pointer, but it might take up to 24 hours for changes to take effect.
+
+If you are unable to visit the domain page after you've configured the domain correctly in the control panel of your host, make sure that the name servers for the new domain are the same as the name servers of the primary domain.
 
 
 == Frequently Asked Questions ==
@@ -46,6 +66,10 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 
 == Changelog ==
+
+= 1.2.0 =
+*	Tweak - WordPress admin menu Domain Names now only visible for users who can manage options.
+*	Tweak - WordPress Coding Standards optimizations.
 
 = 1.1.0 =
 *	Tweak - Improved support for [Google Analytics by Yoast](https://wordpress.org/plugins/google-analytics-for-wordpress/).

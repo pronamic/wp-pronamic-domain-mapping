@@ -47,7 +47,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		// Maybe update
 		global $pronamic_domain_mapping_db_version;
 
-		if ( get_option( 'pronamic_domain_mapping_db_version' ) != $pronamic_domain_mapping_db_version ) {
+		if ( get_option( 'pronamic_domain_mapping_db_version' ) !== $pronamic_domain_mapping_db_version ) {
 			self::upgrade();
 
 			update_option( 'pronamic_domain_mapping_db_version', $pronamic_domain_mapping_db_version );
@@ -66,7 +66,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 			"edit.php?post_type={$post_type}", // parent_slug
 			__( 'Domain Names', 'pronamic_domain_mapping' ), // page_title
 			__( 'Domain Names', 'pronamic_domain_mapping' ), // menu_title
-			'read', // capability
+			'manage_options', // capability
 			'pronamic_domain_mapping_names', // menu_slug
 			array( $this, 'page_domain_names' ) // function
 		);
