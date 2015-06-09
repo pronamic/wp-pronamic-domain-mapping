@@ -24,7 +24,7 @@
 	<ul class="subsubsub">
 		<li class="all">
 			<a class="current" href="">
-				<?php _e( 'All', 'pronamic_domain_mapping' ); ?> <span class="count">(<?php echo esc_html( $query->found_posts ); ?>)</span>
+				<?php esc_html_e( 'All', 'pronamic_domain_mapping' ); ?> <span class="count">(<?php echo esc_html( $query->found_posts ); ?>)</span>
 			</a>
 		</li>
 	</ul>
@@ -32,8 +32,8 @@
 	<table cellspacing="0" class="wp-list-table widefat fixed posts">
 		<thead>
 			<tr>
-				<th scope="col"><?php _e( 'Domain Name', 'pronamic_domain_mapping' ); ?></th>
-				<th scope="col"><?php _e( 'Title', 'pronamic_domain_mapping' ); ?></th>
+				<th scope="col"><?php esc_html_e( 'Domain Name', 'pronamic_domain_mapping' ); ?></th>
+				<th scope="col"><?php esc_html_e( 'Title', 'pronamic_domain_mapping' ); ?></th>
 			</tr>
 		</thead>
 
@@ -51,11 +51,11 @@
 
 						<div class="row-actions">
 							<span class="edit">
-								<a href="<?php echo esc_attr( get_edit_post_link( $post->ID ) ); ?>"><?php _e( 'Edit', 'pronamic_domain_mapping' ); ?></a> |
+								<a href="<?php echo esc_attr( get_edit_post_link( $post->ID ) ); ?>"><?php esc_html_e( 'Edit', 'pronamic_domain_mapping' ); ?></a> |
 							</span>
 
 							<span class="view">
-								<a href="<?php the_permalink(); ?>"><?php _e( 'View', 'pronamic_domain_mapping' ); ?></a>
+								<a href="<?php the_permalink(); ?>"><?php esc_html_e( 'View', 'pronamic_domain_mapping' ); ?></a>
 							</span>
 						</div>
 					</td>

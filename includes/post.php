@@ -17,13 +17,13 @@ function pronamic_domain_mapping_create_initial_post_types() {
 				'not_found'          => __( 'No domain name pages found', 'pronamic_domain_mapping' ),
 				'not_found_in_trash' => __( 'No domain name pages found in Trash', 'pronamic_domain_mapping' ),
 				'parent_item_colon'  => __( 'Parent Domain Name Page:', 'pronamic_domain_mapping' ),
-				'menu_name'          => __( 'Domain Name Pages', 'pronamic_domain_mapping' )
+				'menu_name'          => __( 'Domain Name Pages', 'pronamic_domain_mapping' ),
 			),
 			'public'          => true,
 			'menu_position'   => 30,
 			'capability_type' => 'page',
 			'supports'        => array( 'title', 'editor', 'author', 'comments', 'revisions', 'pronamic_domain_mapping' ),
-			'rewrite'         => array( 'slug' => _x( 'domain-name-page', 'slug', 'pronamic_domain_mapping' ) )
+			'rewrite'         => array( 'slug' => _x( 'domain-name-page', 'slug', 'pronamic_domain_mapping' ) ),
 		)
 	);
 }

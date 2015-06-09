@@ -247,7 +247,7 @@ class Pronamic_Domain_Mapping_Plugin {
 	 */
 	public function request_orderby( $args ) {
 		// Order by
-		if ( isset( $args['orderby'] ) && 'pronamic_domain_mapping_host' == $args['orderby'] ) {
+		if ( isset( $args['orderby'] ) && 'pronamic_domain_mapping_host' === $args['orderby'] ) {
 			$args = array_merge( $args, array(
 				'meta_key' => '_pronamic_domain_mapping_host',
 				'orderby'  => 'meta_value',

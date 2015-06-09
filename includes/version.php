@@ -15,4 +15,4 @@ $pronamic_domain_mapping_version = '1.0.1';
 */
 global $pronamic_domain_mapping_db_version;
 
-$pronamic_domain_mapping_db_version = 101;
+$pronamic_domain_mapping_db_version = '101';
