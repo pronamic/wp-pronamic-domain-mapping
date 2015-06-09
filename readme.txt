@@ -68,7 +68,8 @@ Have a question? Make a thread in the support forum and we will get back to you.
 == Changelog ==
 
 = 1.2.0 =
-*	
+*	Tweak - WordPress admin menu Domain Names now only visible for users who can manage options.
+*	Tweak - WordPress Coding Standards optimizations.
 
 = 1.1.0 =
 *	Tweak - Improved support for [Google Analytics by Yoast](https://wordpress.org/plugins/google-analytics-for-wordpress/).

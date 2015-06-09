@@ -1,67 +1,66 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pronamic Domain Mapping\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-03 13:52+0100\n"
-"PO-Revision-Date: 2013-03-03 13:52+0100\n"
-"Last-Translator: Remco Tolsma <remco@pronamic.nl>\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/pronamic-domain-"
+"mapping\n"
+"POT-Creation-Date: 2015-06-09 10:18:43+00:00\n"
+"PO-Revision-Date: 2015-06-09 12:18+0100\n"
+"Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__withdesc;_ewithdesc;_c;_n_noop:1,2;__ngettext_noop:1,2;_x:2c,1;_nc:1,2;esc_attr_e;esc_html_e;esc_attr__;_nx:4c,1,2;_nx_noop:4c,1,2;esc_html_x:2c,1;esc_html__;_ex:2c,1\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;__ngettext:1,2;__withdesc;_ewithdesc;_c;"
+"_n_noop:1,2;__ngettext_noop:1,2;_x:2c,1;_nc:1,2;esc_attr_e;esc_html_e;"
+"esc_attr__;_nx:4c,1,2;_nx_noop:4c,1,2;esc_html_x:2c,1;esc_html__;_ex:2c,1\n"
 "X-Poedit-Basepath: ../\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: pronamic-domain-mapping.php:100
-#: pronamic-domain-mapping.php:101
-msgid "Domain Names"
-msgstr "Domeinnamen"
-
-#: admin/domain-names.php:29
+#: admin/domain-names.php:27
 msgid "All"
 msgstr "Alles"
 
-#: admin/domain-names.php:37
-#: admin/meta-box-domain-mapping.php:11
-#: includes/post.php:123
+#: admin/domain-names.php:35 admin/meta-box-domain-mapping.php:14
+#: classes/class-pronamic-domain-mapping-plugin-admin.php:223
 msgid "Domain Name"
 msgstr "Domeinnaam"
 
-#: admin/domain-names.php:38
+#: admin/domain-names.php:36
 msgid "Title"
 msgstr "Titel"
 
-#: admin/domain-names.php:56
+#: admin/domain-names.php:54
 msgid "Edit"
 msgstr "Bewerken"
 
-#: admin/domain-names.php:60
+#: admin/domain-names.php:58
 msgid "View"
 msgstr "Bekijken"
+
+#: admin/meta-box-domain-mapping.php:22
+msgid "Google Analytics Tracking ID"
+msgstr "Google Analytics tracking ID"
+
+#: classes/class-pronamic-domain-mapping-plugin-admin.php:67
+#: classes/class-pronamic-domain-mapping-plugin-admin.php:68
+msgid "Domain Names"
+msgstr "Domeinnamen"
+
+#: classes/class-pronamic-domain-mapping-plugin-admin.php:96
+msgid "Domain Name Mapping"
+msgstr "Domeinnaam koppeling"
+
+#: classes/class-pronamic-domain-mapping-plugin-admin.php:225
+msgid "Google Analytics"
+msgstr "Google Analytics"
 
 #: includes/post.php:7
 msgid "Domain Name Page"
 msgstr "Domeinnaam pagina"
-
-#: includes/post.php:9
-msgctxt "post type general name"
-msgid "Domain Name Pages"
-msgstr "Domeinnaam pagina's"
-
-#: includes/post.php:10
-msgctxt "post type singular name"
-msgid "Domain Name Page"
-msgstr "Domeinnaam pagina"
-
-#: includes/post.php:11
-msgctxt "pronamic_domain_page"
-msgid "Add New"
-msgstr "Nieuwe pagina"
 
 #: includes/post.php:12
 msgid "Add New Domain Name Page"
@@ -99,20 +98,52 @@ msgstr "Bovenliggende domeinnaam pagina:"
 msgid "Domain Name Pages"
 msgstr "Domeinnaam pagina's"
 
-#: includes/post.php:27
+#. Plugin Name of the plugin/theme
+msgid "Pronamic Domain Mapping"
+msgstr "Pronamic domeinnaam koppeling"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.pronamic.eu/plugins/domain-mapping/"
+msgstr "http://www.pronamic.eu/plugins/domain-mapping/"
+
+#. Description of the plugin/theme
+msgid ""
+"The Pronamic Domain Mapping plugin allows you to map domains to custom "
+"domain name pages."
+msgstr ""
+"Met de Pronamic domein koppeling plugin kun je domeinnamen koppeling aan "
+"maatwerk domeinnaam pagina's."
+
+#. Author of the plugin/theme
+msgid "Pronamic"
+msgstr "Pronamic"
+
+#. Author URI of the plugin/theme
+msgid "http://www.pronamic.eu/"
+msgstr "http://www.pronamic.nl/"
+
+#: includes/post.php:9
+msgctxt "post type general name"
+msgid "Domain Name Pages"
+msgstr "Domeinnaam pagina's"
+
+#: includes/post.php:10
+msgctxt "post type singular name"
+msgid "Domain Name Page"
+msgstr "Domeinnaam pagina"
+
+#: includes/post.php:11
+msgctxt "pronamic_domain_page"
+msgid "Add New"
+msgstr "Nieuwe pagina"
+
+#: includes/post.php:26
 msgctxt "slug"
 msgid "domain-name-page"
 msgstr "domeinnaam-pagina"
 
-#: includes/post.php:44
-msgid "Domain Name Mapping"
-msgstr "Domeinnaam koppeling"
-
 #~ msgid "Host Name"
 #~ msgstr "Host naam"
-
-#~ msgid "Google Maps"
-#~ msgstr "Google Maps"
 
 #~ msgid "Geocoder"
 #~ msgstr "Geocoder"
@@ -215,9 +246,6 @@ msgstr "Domeinnaam koppeling"
 
 #~ msgid "Height"
 #~ msgstr "Hoogte"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dynamisch"
 
 #~ msgid "Static"
 #~ msgstr "Statisch"
