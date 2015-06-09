@@ -74,20 +74,11 @@ module.exports = function( grunt ) {
 			deploy: {
 				src: [
 					'**',
-					'!composer.json',
-					'!composer.lock',
 					'!Gruntfile.js',
 					'!package.json',
-					'!phpunit.xml',
-					'!phpunit.xml.dist',
 					'!phpcs.ruleset.xml',
-					'!CHANGELOG.md',
-					'!README.md',
 					'!deploy/**',
-					'!documentation/**',
 					'!node_modules/**',
-					'!tests/**',
-					'!wp-content/**',
 				],
 				dest: 'deploy/latest',
 				expand: true
