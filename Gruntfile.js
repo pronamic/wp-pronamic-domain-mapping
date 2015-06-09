@@ -118,7 +118,7 @@ module.exports = function( grunt ) {
 					svnUrl: 'http://plugins.svn.wordpress.org/pronamic-domain-mapping/',
 					svnDir: 'deploy/wp-svn',
 					svnUsername: 'pronamic',
-					deployDir: 'deploy',
+					deployDir: 'deploy/latest',
 					version: '<%= pkg.version %>',
 				}
 			}
