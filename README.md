@@ -23,3 +23,8 @@ Additionally, in order for `sunrise.php` to be loaded, you must add the followin
 ```php
 define( 'SUNRISE', true );
 ```
+
+# Links
+
+*	https://github.com/deniaz/wp-dms
+*	https://github.com/humanmade/Mercator
