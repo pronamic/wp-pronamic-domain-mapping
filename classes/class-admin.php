@@ -43,7 +43,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 *
 	 * @see http://plugins.trac.wordpress.org/browser/wordpress-mu-domain-mapping/tags/0.5.4.3/domain_mapping.php#L84
 	 */
-	function admin_init() {
+	public function admin_init() {
 		// Maybe update
 		global $pronamic_domain_mapping_db_version;
 
@@ -59,7 +59,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	/**
 	 * Admin menu
 	 */
-	function admin_menu() {
+	public function admin_menu() {
 		add_submenu_page(
 			'edit.php?post_type=pronamic_domain_page',
 			__( 'Domain Names', 'pronamic_domain_mapping' ),
@@ -75,7 +75,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	/**
 	 * Page domain names
 	 */
-	function page_domain_names() {
+	public function page_domain_names() {
 		include $this->plugin->dirname . '/admin/domain-names.php';
 	}
 
@@ -84,7 +84,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	/**
 	 * Add meta boxes
 	 */
-	function add_meta_boxes() {
+	public function add_meta_boxes() {
 		$post_types = get_post_types( '', 'names' );
 
 		foreach ( $post_types as $post_type ) {
@@ -108,7 +108,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 *
 	 * @param WP_Post $post
 	 */
-	function details_meta_box( $post ) {
+	public function details_meta_box( $post ) {
 		include $this->plugin->dirname . '/admin/meta-box-domain-mapping.php';
 	}
 
@@ -120,7 +120,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 * @param string $post_id
 	 * @param WP_Post $post
 	 */
-	function save_post( $post_id, $post ) {
+	public function save_post( $post_id, $post ) {
 		// Doing autosave
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return;
@@ -182,7 +182,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 *
 	 * @param string $post_id
 	 */
-	function delete_post( $post_id ) {
+	public function delete_post( $post_id ) {
 		global $wpdb;
 
 		$result = $wpdb->delete(
@@ -205,7 +205,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 *
 	 * @param unknown_type $columns
 	 */
-	function manage_edit_columns( $columns ) {
+	public function manage_edit_columns( $columns ) {
 		$new_columns = array();
 
 		if ( isset( $columns['cb'] ) ) {
@@ -243,7 +243,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 * @param array $columns
 	 * @return array
 	 */
-	function manage_edit_sortable_columns( $columns ) {
+	public function manage_edit_sortable_columns( $columns ) {
 		$columns['pronamic_domain_mapping_host'] = 'pronamic_domain_mapping_host';
 
 		return $columns;
@@ -257,7 +257,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 * @param string $column
 	 * @param string $post_id
 	 */
-	function manage_posts_custom_column( $column, $post_id ) {
+	public function manage_posts_custom_column( $column, $post_id ) {
 		switch ( $column ) {
 			case 'pronamic_domain_mapping_host' :
 				$host = get_post_meta( $post_id, '_pronamic_domain_mapping_host', true );
