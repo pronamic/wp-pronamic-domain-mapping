@@ -31,9 +31,9 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		// Post type
 		$post_type = 'pronamic_domain_page';
 
-		add_filter( "manage_edit-{$post_type}_columns",          array( $this, 'manage_edit_columns' ) );
-		add_filter( "manage_edit-{$post_type}_sortable_columns", array( $this, 'manage_edit_sortable_columns' ) );
-		add_filter( "manage_{$post_type}_posts_custom_column",   array( $this, 'manage_posts_custom_column' ), 10, 2 );
+		add_filter( 'manage_edit-' . $post_type . '_columns',          array( $this, 'manage_edit_columns' ) );
+		add_filter( 'manage_edit-' . $post_type . '_sortable_columns', array( $this, 'manage_edit_sortable_columns' ) );
+		add_filter( 'manage_' . $post_type . '_posts_custom_column',   array( $this, 'manage_posts_custom_column' ), 10, 2 );
 	}
 
 	//////////////////////////////////////////////////

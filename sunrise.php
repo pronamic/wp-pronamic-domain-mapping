@@ -8,6 +8,7 @@
  * @see http://plugins.trac.wordpress.org/browser/wordpress-mu-domain-mapping/tags/0.5.4.3/sunrise.php
  */
 global $wpdb;
+global $pronamic_domain_mapping_sunrise_host;
 
 // Tables
 $wpdb->pronamic_domain_posts = $wpdb->base_prefix . 'pronamic_domain_posts';
