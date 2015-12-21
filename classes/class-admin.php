@@ -84,20 +84,16 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	/**
 	 * Add meta boxes
 	 */
-	public function add_meta_boxes() {
-		$post_types = get_post_types( '', 'names' );
-
-		foreach ( $post_types as $post_type ) {
-			if ( post_type_supports( $post_type, 'pronamic_domain_mapping' ) ) {
-				add_meta_box(
-					'pronamic_domain_mapping',
-					__( 'Domain Name Mapping', 'pronamic_domain_mapping' ),
-					array( $this, 'details_meta_box' ),
-					$post_type,
-					'normal',
-					'high'
-				);
-			}
+	public function add_meta_boxes( $post_type ) {
+		if ( post_type_supports( $post_type, 'pronamic_domain_mapping' ) ) {
+			add_meta_box(
+				'pronamic_domain_mapping',
+				__( 'Domain Name Mapping', 'pronamic_domain_mapping' ),
+				array( $this, 'details_meta_box' ),
+				$post_type,
+				'normal',
+				'high'
+			);
 		}
 	}
 
