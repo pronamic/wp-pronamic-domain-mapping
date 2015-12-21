@@ -9,7 +9,7 @@
 ### WordPress Network
 
 If you work with an WordPress Network and want to enable domain pages you have
-to add the following line to your /wp-content/sunrise.php file.
+to add the following line to your `/wp-content/sunrise.php` file.
 
 ```php
 $file = WP_CONTENT_DIR . '/plugins/pronamic-domain-mapping/sunrise.php'; 
