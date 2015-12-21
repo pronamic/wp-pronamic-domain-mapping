@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pronamic Domain Mapping\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/pronamic-domain-"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pronamic-domain-"
 "mapping\n"
-"POT-Creation-Date: 2015-06-09 10:18:43+00:00\n"
-"PO-Revision-Date: 2015-06-09 12:18+0100\n"
+"POT-Creation-Date: 2015-12-21 13:54:04+00:00\n"
+"PO-Revision-Date: 2015-12-21 14:50+0100\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -20,24 +20,24 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/domain-names.php:27
+#: admin/domain-names.php:26
 msgid "All"
 msgstr "Alles"
 
-#: admin/domain-names.php:35 admin/meta-box-domain-mapping.php:14
-#: classes/class-pronamic-domain-mapping-plugin-admin.php:223
+#: admin/domain-names.php:34 admin/meta-box-domain-mapping.php:14
+#: classes/class-admin.php:219
 msgid "Domain Name"
 msgstr "Domeinnaam"
 
-#: admin/domain-names.php:36
+#: admin/domain-names.php:35
 msgid "Title"
 msgstr "Titel"
 
-#: admin/domain-names.php:54
+#: admin/domain-names.php:53
 msgid "Edit"
 msgstr "Bewerken"
 
-#: admin/domain-names.php:58
+#: admin/domain-names.php:57
 msgid "View"
 msgstr "Bekijken"
 
@@ -45,16 +45,15 @@ msgstr "Bekijken"
 msgid "Google Analytics Tracking ID"
 msgstr "Google Analytics tracking ID"
 
-#: classes/class-pronamic-domain-mapping-plugin-admin.php:67
-#: classes/class-pronamic-domain-mapping-plugin-admin.php:68
+#: classes/class-admin.php:65 classes/class-admin.php:66
 msgid "Domain Names"
 msgstr "Domeinnamen"
 
-#: classes/class-pronamic-domain-mapping-plugin-admin.php:96
+#: classes/class-admin.php:94
 msgid "Domain Name Mapping"
 msgstr "Domeinnaam koppeling"
 
-#: classes/class-pronamic-domain-mapping-plugin-admin.php:225
+#: classes/class-admin.php:221
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
@@ -103,8 +102,8 @@ msgid "Pronamic Domain Mapping"
 msgstr "Pronamic domeinnaam koppeling"
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.pronamic.eu/plugins/domain-mapping/"
-msgstr "http://www.pronamic.eu/plugins/domain-mapping/"
+msgid "http://www.pronamic.eu/plugins/pronamic-domain-mapping/"
+msgstr "http://www.pronamic.eu/plugins/pronamic-domain-mapping/"
 
 #. Description of the plugin/theme
 msgid ""
