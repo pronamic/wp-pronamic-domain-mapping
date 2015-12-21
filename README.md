@@ -16,7 +16,7 @@ $file = WP_CONTENT_DIR . '/plugins/pronamic-domain-mapping/sunrise.php';
 if ( is_readable( $file ) ) {
 	include $file;
 }
-`
+```
 
 Additionally, in order for `sunrise.php` to be loaded, you must add the following to your `wp-config.php`:
 
