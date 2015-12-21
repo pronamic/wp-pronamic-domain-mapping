@@ -1,6 +1,6 @@
 # [Pronamic Domain Mapping](http://www.pronamic.eu/plugins/pronamic-domain-mapping/)
 
-** Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.**
+**Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.**
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
