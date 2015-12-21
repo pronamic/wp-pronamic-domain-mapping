@@ -117,4 +117,7 @@ Thanks for using the Pronamic Domain Mapping plugin! As always, this update is v
 
 
 == Inspiration ==
+
 *	https://github.com/deniaz/wp-dms
+*	https://github.com/humanmade/Mercator
+
