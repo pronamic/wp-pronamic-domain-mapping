@@ -29,9 +29,9 @@ $query = "
 	;
 ";
 
-$query = $wpdb->prepare( $query, $host );
+$query = $wpdb->prepare( $query, $host ); // WPCS: unprepared SQL ok.
 
-$blog_host = $wpdb->get_var( $query );
+$blog_host = $wpdb->get_var( $query ); // WPCS: unprepared SQL ok.
 
 if ( ! empty( $blog_host ) ) {
 	$pronamic_domain_mapping_sunrise_host = $host;

@@ -162,7 +162,7 @@ class Pronamic_Domain_Mapping_Plugin {
 			;
 		", $host );
 
-		$this->domain_page_id = $wpdb->get_var( $db_query );
+		$this->domain_page_id = $wpdb->get_var( $db_query ); // WPCS: unprepared SQL ok.
 
 		if ( ! empty( $this->domain_page_id ) ) {
 			// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/option.php#L112-L123

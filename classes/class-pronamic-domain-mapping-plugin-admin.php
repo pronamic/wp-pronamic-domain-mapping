@@ -60,15 +60,13 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	 * Admin menu
 	 */
 	function admin_menu() {
-		$post_type = 'pronamic_domain_page';
-
 		add_submenu_page(
-			"edit.php?post_type={$post_type}", // parent_slug
-			__( 'Domain Names', 'pronamic_domain_mapping' ), // page_title
-			__( 'Domain Names', 'pronamic_domain_mapping' ), // menu_title
-			'manage_options', // capability
-			'pronamic_domain_mapping_names', // menu_slug
-			array( $this, 'page_domain_names' ) // function
+			'edit.php?post_type=pronamic_domain_page',
+			__( 'Domain Names', 'pronamic_domain_mapping' ),
+			__( 'Domain Names', 'pronamic_domain_mapping' ),
+			'manage_options',
+			'pronamic_domain_mapping_names',
+			array( $this, 'page_domain_names' )
 		);
 	}
 
@@ -213,8 +211,6 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		if ( isset( $columns['cb'] ) ) {
 			$new_columns['cb'] = $columns['cb'];
 		}
-
-		// $new_columns['thumbnail'] = __('Thumbnail', 'pronamic_companies');
 
 		if ( isset( $columns['title'] ) ) {
 			$new_columns['title'] = $columns['title'];

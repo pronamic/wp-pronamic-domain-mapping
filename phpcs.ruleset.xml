@@ -4,7 +4,11 @@
 	<rule ref="WordPress">
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
 
+		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+
 		<exclude name="Squiz.Commenting" />
+
+		<exclude name="WordPress.NamingConventions.ValidVariableName.PrivateNoUnderscore" />
 
 		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
 		<exclude name="WordPress.VIP.PostsPerPage.posts_per_page" />
