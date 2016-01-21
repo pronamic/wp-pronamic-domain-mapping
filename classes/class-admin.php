@@ -48,7 +48,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		global $pronamic_domain_mapping_db_version;
 
 		if ( get_option( 'pronamic_domain_mapping_db_version' ) !== $pronamic_domain_mapping_db_version ) {
-			self::upgrade();
+			$this->upgrade();
 
 			update_option( 'pronamic_domain_mapping_db_version', $pronamic_domain_mapping_db_version );
 		}
