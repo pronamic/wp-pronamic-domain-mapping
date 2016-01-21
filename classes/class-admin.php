@@ -20,7 +20,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		$this->plugin = $plugin;
 
 		// Actions
-		add_action( 'admin_menu', array( $this, 'admin_init' ) );
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
