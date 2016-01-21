@@ -280,10 +280,12 @@ class Pronamic_Domain_Mapping_Plugin {
 		// This is also required to prevent 'redirect_canonical'
 		// @see http://www.mydigitallife.info/how-to-disable-wordpress-canonical-url-or-permalink-auto-redirect/
 		if ( post_type_supports( $post->post_type, 'pronamic_domain_mapping' ) ) {
-			$host = get_post_meta( $post->ID, '_pronamic_domain_mapping_host', true );
+			$protocol = get_post_meta( $post->ID, '_pronamic_domain_mapping_protocol', true );
+			$protocol = empty( $protocol ) ? 'http' : $protocol;
+			$host     = get_post_meta( $post->ID, '_pronamic_domain_mapping_host', true );
 
 			if ( ! empty( $host ) ) {
-				$link = 'http://' . $host . '/';
+				$link = $protocol . '://' . $host . '/';
 			}
 		}
 

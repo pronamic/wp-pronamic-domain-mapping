@@ -156,8 +156,9 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 
 		// Meta
 		$definition = array(
-			'_pronamic_domain_mapping_host'  => FILTER_SANITIZE_STRING,
-			'_pronamic_domain_mapping_ga_ua' => FILTER_SANITIZE_STRING,
+			'_pronamic_domain_mapping_protocol' => FILTER_SANITIZE_STRING,
+			'_pronamic_domain_mapping_host'     => FILTER_SANITIZE_STRING,
+			'_pronamic_domain_mapping_ga_ua'    => FILTER_SANITIZE_STRING,
 		);
 
 		$data = filter_input_array( INPUT_POST, $definition );
@@ -256,8 +257,10 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 	public function manage_posts_custom_column( $column, $post_id ) {
 		switch ( $column ) {
 			case 'pronamic_domain_mapping_host' :
-				$host = get_post_meta( $post_id, '_pronamic_domain_mapping_host', true );
-				$url = 'http://' . $host . '/';
+				$protocol = get_post_meta( $post_id, '_pronamic_domain_mapping_protocol', true );
+				$protocol = empty( $protocol ) ? 'http' : $protocol;
+				$host     = get_post_meta( $post_id, '_pronamic_domain_mapping_host', true );
+				$url      = $protocol . '://' . $host . '/';
 
 				printf(
 					'<a href="%s">%s</a>',
