@@ -292,7 +292,7 @@ class Pronamic_Domain_Mapping_Plugin_Admin {
 		}
 
 		$query = "CREATE TABLE $wpdb->pronamic_domain_posts (
-			domain VARCHAR(200) NOT NULL,
+			domain VARCHAR(128) NOT NULL,
 			blog_id BIGINT(20) NOT NULL,
 			post_id BIGINT(20) NOT NULL,
 			PRIMARY KEY  (domain)
