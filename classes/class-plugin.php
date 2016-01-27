@@ -63,6 +63,8 @@ class Pronamic_Domain_Mapping_Plugin {
 		add_filter( 'page_link', array( $this, 'page_link' ), 10, 2 );
 		// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/link-template.php#L275-L285
 		add_filter( 'post_type_link', array( $this, 'post_type_link' ), 10, 2 );
+		// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L479-L489
+		add_filter( 'redirect_canonical', array( $this, 'redirect_canonical' ), 10, 2 );
 
 		// WPML
 		add_filter( 'icl_set_current_language', array( $this, 'icl_set_current_language' ) );
@@ -290,6 +292,30 @@ class Pronamic_Domain_Mapping_Plugin {
 		}
 
 		return $link;
+	}
+
+	/**
+	 * Redirect canonical.
+	 *
+	 * @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L479-L489
+	 */
+	public function redirect_canonical( $redirect_url, $requested_url ) {
+		global $pronamic_domain_mapping_sunrise_host;
+
+		if ( isset( $pronamic_domain_mapping_sunrise_host ) ) {
+			// build the URL in the address bar
+			// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L62-L67
+			$requested_url  = is_ssl() ? 'https://' : 'http://';
+			$requested_url .= $pronamic_domain_mapping_sunrise_host;
+			$requested_url .= $_SERVER['REQUEST_URI'];
+		}
+
+		// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L465-L467
+		if ( $redirect_url === $requested_url ) {
+			$redirect_url = false;
+		}
+
+		return $redirect_url;
 	}
 
 	//////////////////////////////////////////////////
