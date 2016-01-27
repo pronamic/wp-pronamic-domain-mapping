@@ -303,7 +303,6 @@ class Pronamic_Domain_Mapping_Plugin {
 		global $pronamic_domain_mapping_sunrise_host;
 
 		if ( isset( $pronamic_domain_mapping_sunrise_host ) ) {
-			// build the URL in the address bar
 			// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L62-L67
 			$requested_url  = is_ssl() ? 'https://' : 'http://';
 			$requested_url .= $pronamic_domain_mapping_sunrise_host;
