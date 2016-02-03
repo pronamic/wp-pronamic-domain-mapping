@@ -277,8 +277,15 @@ class Pronamic_Domain_Mapping_Plugin {
 	 * @param string $permalink
 	 * @param WP_Post $post
 	 * @param boolean $leavename
+	 * @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/link-template.php#L283-L293
 	 */
 	public function post_type_link( $link, $post ) {
+		// To view draft posts you have to be logged in, the auth cookies are most of the time
+		// not set on the domain name page, therefor we return the default post link.
+		if ( 'draft' === $post->post_status ) {
+			return $link;
+		}
+
 		// This is also required to prevent 'redirect_canonical'
 		// @see http://www.mydigitallife.info/how-to-disable-wordpress-canonical-url-or-permalink-auto-redirect/
 		if ( post_type_supports( $post->post_type, 'pronamic_domain_mapping' ) ) {
