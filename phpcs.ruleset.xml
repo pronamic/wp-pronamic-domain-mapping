@@ -2,12 +2,15 @@
 
 <ruleset name="Pronamic Domain Mapping">
 	<rule ref="WordPress">
-		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
 
 		<exclude name="Squiz.Commenting" />
 
+		<exclude name="WordPress.NamingConventions.ValidVariableName.PrivateNoUnderscore" />
+
 		<exclude name="WordPress.VIP.DirectDatabaseQuery" />
 		<exclude name="WordPress.VIP.PostsPerPage.posts_per_page" />
+		<exclude name="WordPress.VIP.RestrictedFunctions.parse_url" />
 		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query" />
 		<exclude name="WordPress.VIP.SuperGlobalInputUsage.AccessDetected" />
 		<exclude name="WordPress.VIP.ValidatedSanitizedInput" />

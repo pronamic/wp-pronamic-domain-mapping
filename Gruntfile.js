@@ -1,4 +1,6 @@
 module.exports = function( grunt ) {
+	require( 'load-grunt-tasks' )( grunt );
+
 	// Project configuration.
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
@@ -116,9 +118,9 @@ module.exports = function( grunt ) {
 			app: {
 				options: {
 					svnUrl: 'http://plugins.svn.wordpress.org/pronamic-domain-mapping/',
-					svnDir: 'wp-svn',
+					svnDir: 'deploy/wp-svn',
 					svnUsername: 'pronamic',
-					deployDir: 'deploy',
+					deployDir: 'deploy/latest',
 					version: '<%= pkg.version %>',
 				}
 			}
@@ -159,19 +161,6 @@ module.exports = function( grunt ) {
 			}
 		}
 	} );
-
-	grunt.loadNpmTasks( 'grunt-phplint' );
-	grunt.loadNpmTasks( 'grunt-phpcs' );
-	grunt.loadNpmTasks( 'grunt-contrib-clean' );
-	grunt.loadNpmTasks( 'grunt-contrib-compress' );
-	grunt.loadNpmTasks( 'grunt-contrib-copy' );
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-	grunt.loadNpmTasks( 'grunt-checkwpversion' );
-	grunt.loadNpmTasks( 'grunt-wp-i18n' );
-	grunt.loadNpmTasks( 'grunt-shell' );
-	grunt.loadNpmTasks( 'grunt-rt-wp-deploy' );
-	grunt.loadNpmTasks( 'grunt-git' );
-	grunt.loadNpmTasks( 'grunt-aws-s3' );
 
 	// Default task(s).
 	grunt.registerTask( 'default', [ 'jshint', 'phplint', 'phpcs', 'checkwpversion' ] );

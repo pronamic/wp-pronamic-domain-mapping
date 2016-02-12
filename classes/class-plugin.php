@@ -63,6 +63,8 @@ class Pronamic_Domain_Mapping_Plugin {
 		add_filter( 'page_link', array( $this, 'page_link' ), 10, 2 );
 		// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/link-template.php#L275-L285
 		add_filter( 'post_type_link', array( $this, 'post_type_link' ), 10, 2 );
+		// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L479-L489
+		add_filter( 'redirect_canonical', array( $this, 'redirect_canonical' ), 10, 2 );
 
 		// WPML
 		add_filter( 'icl_set_current_language', array( $this, 'icl_set_current_language' ) );
@@ -162,7 +164,7 @@ class Pronamic_Domain_Mapping_Plugin {
 			;
 		", $host );
 
-		$this->domain_page_id = $wpdb->get_var( $db_query );
+		$this->domain_page_id = $wpdb->get_var( $db_query ); // WPCS: unprepared SQL ok.
 
 		if ( ! empty( $this->domain_page_id ) ) {
 			// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/option.php#L112-L123
@@ -275,19 +277,52 @@ class Pronamic_Domain_Mapping_Plugin {
 	 * @param string $permalink
 	 * @param WP_Post $post
 	 * @param boolean $leavename
+	 * @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/link-template.php#L283-L293
 	 */
 	public function post_type_link( $link, $post ) {
+		// To view draft posts you have to be logged in, the auth cookies are most of the time
+		// not set on the domain name page, therefor we return the default post link.
+		if ( 'draft' === $post->post_status ) {
+			return $link;
+		}
+
 		// This is also required to prevent 'redirect_canonical'
 		// @see http://www.mydigitallife.info/how-to-disable-wordpress-canonical-url-or-permalink-auto-redirect/
 		if ( post_type_supports( $post->post_type, 'pronamic_domain_mapping' ) ) {
-			$host = get_post_meta( $post->ID, '_pronamic_domain_mapping_host', true );
+			$host     = get_post_meta( $post->ID, '_pronamic_domain_mapping_host', true );
 
 			if ( ! empty( $host ) ) {
-				$link = 'http://' . $host . '/';
+				$protocol = get_post_meta( $post->ID, '_pronamic_domain_mapping_protocol', true );
+				$protocol = empty( $protocol ) ? 'http' : $protocol;
+
+				$link = $protocol . '://' . $host . '/';
 			}
 		}
 
 		return $link;
+	}
+
+	/**
+	 * Redirect canonical.
+	 *
+	 * @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L479-L489
+	 */
+	public function redirect_canonical( $redirect_url, $requested_url ) {
+		global $pronamic_domain_mapping_sunrise_host;
+
+		if ( isset( $pronamic_domain_mapping_sunrise_host ) ) {
+			// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L62-L67
+			$requested_url  = is_ssl() ? 'https://' : 'http://';
+			$requested_url .= $pronamic_domain_mapping_sunrise_host;
+			$requested_url .= $_SERVER['REQUEST_URI'];
+		}
+
+		// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L465-L467
+		if ( $redirect_url === $requested_url ) {
+			$redirect_url = false;
+		}
+
+		return $redirect_url;
 	}
 
 	//////////////////////////////////////////////////

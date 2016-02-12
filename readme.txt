@@ -3,8 +3,8 @@ Contributors: pronamic, remcotolsma
 Tags: domain, mapping, landingpage, landingspage, page, dns, map, seo
 Donate link: http://pronamic.eu/donate/?for=wp-plugin-pronamic-domain-mapping&source=wp-plugin-readme-txt
 Requires at least: 3.2
-Tested up to: 4.2.2
-Stable tag: 1.2.0
+Tested up to: 4.4
+Stable tag: 1.3.0
 License: GPLv2 or later
 
 The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.
@@ -67,6 +67,15 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 == Changelog ==
 
+= 1.3.0 =
+*	Changed - Return default post link for draft posts.
+*	Changed - Added support for redirect canonical if post status is concept or private.
+*	Changed - Added support for https protocol.
+*	Changed - Added support for WordPress MU Domain Mapping.
+*	Tweak - Reduced the domain length to 128 to fix max key length.
+*	Tweak - Simplified adding meta box.
+*	Tweak - WordPress Coding Standards optimizations.
+
 = 1.2.0 =
 *	Tweak - WordPress admin menu Domain Names now only visible for users who can manage options.
 *	Tweak - WordPress Coding Standards optimizations.
@@ -117,4 +126,7 @@ Thanks for using the Pronamic Domain Mapping plugin! As always, this update is v
 
 
 == Inspiration ==
+
 *	https://github.com/deniaz/wp-dms
+*	https://github.com/humanmade/Mercator
+

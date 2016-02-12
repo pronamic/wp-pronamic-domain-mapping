@@ -1,25 +1,24 @@
-<div class="wrap">
-	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+<?php
 
-	<?php
+global $post;
 
-	global $post;
-
-	$query = new WP_Query( array(
-		'post_type'  => 'any',
-		'nopaging'   => true,
-		'meta_query' => array(
-			array(
-				'key'     => '_pronamic_domain_mapping_host',
-				'compare' => 'EXISTS',
-			),
+$query = new WP_Query( array(
+	'post_type'  => 'any',
+	'nopaging'   => true,
+	'meta_query' => array(
+		array(
+			'key'     => '_pronamic_domain_mapping_host',
+			'compare' => 'EXISTS',
 		),
-		'order'      => 'ASC',
-		'orderby'    => 'meta_value',
-		'meta_key'   => '_pronamic_domain_mapping_host',
-	) );
+	),
+	'order'      => 'ASC',
+	'orderby'    => 'meta_value',
+	'meta_key'   => '_pronamic_domain_mapping_host',
+) );
 
-	?>
+?>
+<div class="wrap">
+	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 	<ul class="subsubsub">
 		<li class="all">
