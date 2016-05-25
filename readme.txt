@@ -67,6 +67,9 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 == Changelog ==
 
+= Unreleased =
+*	Changed - Removed pronamic_domain_page from WordPress SEO sitemaps
+
 = 1.3.0 =
 *	Changed - Return default post link for draft posts.
 *	Changed - Added support for redirect canonical if post status is concept or private.
