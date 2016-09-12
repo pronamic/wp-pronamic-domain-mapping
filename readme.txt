@@ -35,7 +35,14 @@ if ( is_readable( $file ) ) {
 3. Create a new domain name page by clicking **Add New** in the **Domain Name Pages** menu
 4. Enter the domain for which this page should be shown in the field **Domain Name**
 
-To actually visit the just added domain name page, you need to make sure the domain is configured to show your WordPress site. To test the domain name page, just visit the domain for which you're creating the domain name page. If you don't see the domain name page, follow the instructions below if your host uses either the Plesk or DirectAdmin control panel to link the domain to your main domain (which is running the WordPress installation).
+To actually visit the just added domain name page, you need to make sure the domain is configured to show your WordPress site. To test the domain name page, just visit the domain for which you're creating the domain name page. If you don't see the domain name page, follow the instructions below if your host uses either the cPanel, Plesk or DirectAdmin control panel to link the domain to your main domain (which is running the WordPress installation).
+
+= Adding a Parked Domain in cPanel =
+
+1. Login to the cPanel control panel
+2. Go to "Parked Domains" in the "Domains" section
+3. In the section "Create a New Parked Domain", enter the domain of the domain name page and click "Add Domain" (domain root should be the same as your main website and redirection should be disabled for the parked domain)
+4. The domain name page should now be shown when you visit the parked domain, but it might take up to 24 hours for changes to take effect.
 
 = Creating a Domain Alias in Plesk =
 
