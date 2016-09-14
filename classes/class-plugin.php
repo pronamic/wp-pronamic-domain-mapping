@@ -135,7 +135,7 @@ class Pronamic_Domain_Mapping_Plugin {
 			$host = parse_url( $url, PHP_URL_HOST );
 
 			if ( false !== $host ) {
-				header( 'Access-Control-Allow-Origin: '. $host );
+				header( 'Access-Control-Allow-Origin: ' . $host );
 			}
 		}
 	}
