@@ -389,13 +389,16 @@ class Pronamic_Domain_Mapping_Plugin {
 	 * as the sitemap for this post type will result in 404's due to external URLs.
 	 *
 	 * @see https://github.com/Yoast/wordpress-seo/blob/3.2.5/inc/sitemaps/class-post-type-sitemap-provider.php#L413-L420
+	 * @see https://github.com/Yoast/wordpress-seo/blob/3.2.5/inc/sitemaps/class-post-type-sitemap-provider.php#L204-L212
 	 *
 	 * @param bool   $exclude
 	 * @param string $post_type
 	 */
 	public function wpseo_sitemap_exclude_post_type( $exclude, $post_type ) {
 		if ( 'pronamic_domain_page' === $post_type ) {
-			return true;
+			$exclude = true;
 		}
+
+		return $exclude;
 	}
 }
