@@ -22,7 +22,14 @@ function pronamic_domain_mapping_create_initial_post_types() {
 			'public'          => true,
 			'menu_position'   => 30,
 			'capability_type' => 'page',
-			'supports'        => array( 'title', 'editor', 'author', 'comments', 'revisions', 'pronamic_domain_mapping' ),
+			'supports'        => array(
+				'title',
+				'editor',
+				'author',
+				'comments',
+				'revisions',
+				'pronamic_domain_mapping',
+			),
 			'rewrite'         => array( 'slug' => _x( 'domain-name-page', 'slug', 'pronamic_domain_mapping' ) ),
 		)
 	);
