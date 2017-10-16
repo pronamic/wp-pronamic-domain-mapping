@@ -28,6 +28,7 @@ function pronamic_domain_mapping_create_initial_post_types() {
 				'author',
 				'comments',
 				'revisions',
+				'page-attributes',
 				'pronamic_domain_mapping',
 			),
 			'rewrite'         => array( 'slug' => _x( 'domain-name-page', 'slug', 'pronamic_domain_mapping' ) ),
