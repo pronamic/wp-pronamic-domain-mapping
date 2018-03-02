@@ -63,6 +63,8 @@ class Pronamic_Domain_Mapping_Plugin {
 		add_filter( 'page_link', array( $this, 'page_link' ), 10, 2 );
 		// @see https://github.com/WordPress/WordPress/blob/4.0/wp-includes/link-template.php#L275-L285
 		add_filter( 'post_type_link', array( $this, 'post_type_link' ), 10, 2 );
+		// @see https://github.com/WordPress/WordPress/blob/4.9.4/wp-includes/default-filters.php#L460
+		add_action( 'template_redirect', array( $this, 'template_redirect' ), 1 );
 		// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L479-L489
 		add_filter( 'redirect_canonical', array( $this, 'redirect_canonical' ), 10, 2 );
 
@@ -306,12 +308,34 @@ class Pronamic_Domain_Mapping_Plugin {
 	}
 
 	/**
+	 * Template redirect filter.
+	 */
+	public function template_redirect() {
+		if ( ! empty( $this->domain_page_id ) ) {
+			return;
+		}
+
+		if ( ! is_single() || 'pronamic_domain_page' !== get_post_type() || 'publish' !== get_post_status() ) {
+			return;
+		}
+
+		$this->domain_page_id = url_to_postid( $_SERVER['REQUEST_URI'] );
+
+		// @see https://github.com/WordPress/WordPress/blob/4.9.4/wp-includes/canonical.php#L167
+		$_GET['p'] = $this->domain_page_id;
+	}
+
+	/**
 	 * Redirect canonical.
 	 *
 	 * @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L479-L489
 	 */
 	public function redirect_canonical( $redirect_url, $requested_url ) {
 		global $pronamic_domain_mapping_sunrise_host;
+
+		if ( ! empty( $this->domain_page_id ) ) {
+			$redirect_url = get_permalink( $this->domain_page_id );
+		}
 
 		if ( isset( $pronamic_domain_mapping_sunrise_host ) ) {
 			// @see https://github.com/WordPress/WordPress/blob/4.4/wp-includes/canonical.php#L62-L67
