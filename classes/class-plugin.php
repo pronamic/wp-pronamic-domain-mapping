@@ -311,15 +311,17 @@ class Pronamic_Domain_Mapping_Plugin {
 	 * Template redirect filter.
 	 */
 	public function template_redirect() {
+		global $post;
+
 		if ( ! empty( $this->domain_page_id ) ) {
 			return;
 		}
 
-		if ( ! is_single() || 'pronamic_domain_page' !== get_post_type() || 'publish' !== get_post_status() ) {
+		if ( ! is_single() || ! post_type_supports( $post->post_type, 'pronamic_domain_mapping' ) || 'publish' !== $post->post_status ) {
 			return;
 		}
 
-		$this->domain_page_id = url_to_postid( $_SERVER['REQUEST_URI'] );
+		$this->domain_page_id = get_the_ID();
 
 		// @see https://github.com/WordPress/WordPress/blob/4.9.4/wp-includes/canonical.php#L167
 		$_GET['p'] = $this->domain_page_id;
