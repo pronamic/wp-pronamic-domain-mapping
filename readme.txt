@@ -1,10 +1,10 @@
 === Pronamic Domain Mapping ===
 Contributors: pronamic, remcotolsma
 Tags: domain, mapping, landingpage, landingspage, page, dns, map, seo
-Donate link: http://pronamic.eu/donate/?for=wp-plugin-pronamic-domain-mapping&source=wp-plugin-readme-txt
+Donate link: https://www.pronamic.eu/donate/?for=wp-plugin-pronamic-domain-mapping&source=wp-plugin-readme-txt
 Requires at least: 3.2
-Tested up to: 4.8
-Stable tag: 1.3.2
+Tested up to: 5.7
+Stable tag: 2.0.0
 License: GPLv2 or later
 
 The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.
@@ -22,6 +22,7 @@ to add the following line to your /wp-content/sunrise.php file.
 
 `
 $file = WP_CONTENT_DIR . '/plugins/pronamic-domain-mapping/sunrise.php'; 
+
 if ( is_readable( $file ) ) {
 	include $file;
 }
@@ -74,8 +75,12 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 == Changelog ==
 
+= 2.0.0 =
+*	Added - Added support for block editor on domain name pages.
+*	Tweak - Supports adding `pronamic_domain_mapping` post type support.
+
 = 1.3.2 =
-*	Added `page-attributes` support to the `pronamic_domain_page` custom post type.
+*	Added - Added `page-attributes` support to the `pronamic_domain_page` custom post type.
 
 = 1.3.1 =
 *	Changed - Removed pronamic_domain_page from WordPress SEO sitemaps.
@@ -102,11 +107,11 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 = 1.0.0 =
 *	Added support for WordPress network/multisite installations
-*	Added support for the [WordPress SEO by Yoast](http://wordpress.org/plugins/wordpress-seo/) plugin
-*	Added support for the [Google Analytics for WordPress](http://wordpress.org/plugins/google-analytics-for-wordpress/) plugin
+*	Added support for the [WordPress SEO by Yoast](https://wordpress.org/plugins/wordpress-seo/) plugin
+*	Added support for the [Google Analytics for WordPress](https://wordpress.org/plugins/google-analytics-for-wordpress/) plugin
 
 = 0.1.3 =
-*	Added support for The WordPress Multilingual Plugin (http://wpml.org/)
+*	Added support for The WordPress Multilingual Plugin (https://wpml.org/)
 
 = 0.1.2 =
 *	Added some screenshots
