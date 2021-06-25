@@ -1,0 +1,68 @@
+{
+	"name": "pronamic/wp-pronamic-domain-mapping",
+	"type": "wordpress-plugin",
+	"description": "The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.",
+	"keywords": ["pronamic", "wordpress", "domain", "mapping", "landingpage", "dns", "map", "seo"],
+	"homepage": "https://github.com/pronamic/wp-pronamic-pay",
+	"license": "GPL-3.0-or-later" ,
+	"authors": [
+		{
+			"name": "Remco Tolsma",
+			"email": "remco@pronamic.nl",
+			"homepage": "https://www.remcotolsma.nl/",
+			"role": "Developer"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "https://wpackagist.org/"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Pronamic\\WordPress\\DomainMapping\\": "src/"
+		},
+		"files": [
+			"includes/post.php",
+			"includes/version.php"
+		]
+	},
+	"config": {
+		"platform": {
+			"php": "5.6.20"
+		},
+		"sort-packages": true
+	},
+	"require": {
+		"php": ">=5.6.20",
+		"composer/installers": "^1.7"
+	},
+	"require-dev": {
+		"bamarni/composer-bin-plugin": "^1.4",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"php-coveralls/php-coveralls": "^2.4",
+		"phpcompatibility/php-compatibility": "^9.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpmd/phpmd": "^2.9",
+		"phpunit/phpunit": "^5.7",
+		"roots/wordpress": "^5.7",
+		"squizlabs/php_codesniffer": "^3.5",
+		"wp-coding-standards/wpcs": "^2.3",
+		"wp-phpunit/wp-phpunit": "^5.7"
+	},
+	"scripts": {
+		"coveralls": "vendor/bin/php-coveralls -v",
+		"phpcbf":"vendor/bin/phpcbf",
+		"phpcs": "XDEBUG_MODE=off vendor/bin/phpcs -s -v",
+		"phplint": "find src tests -name '*.php' | xargs -n 1 -P 4 php -l",
+		"phpmd": "vendor/bin/phpmd src,tests text phpmd.ruleset.xml --suffixes php",
+		"phpstan": "vendor/bin/phpstan analyse",
+		"phpunit": "vendor/bin/phpunit --colors=always",
+		"post-install-cmd": "echo 'Optionally run: composer bin all install'",
+		"post-update-cmd": "echo 'Optionally run: composer bin all update'",
+		"psalm": "vendor/bin/psalm",
+		"make-pot": "wp i18n make-pot . languages/pronamic_domain_mapping.pot --slug='pronamic_domain_mapping'",
+		"update-po": "find languages/*.po -type f -exec msgmerge --update --backup=off {} languages/pronamic_domain_mapping.pot \\;"
+	}
+}

@@ -1,6 +1,9 @@
 # Deploy
 /deploy/
 
+# PHPStorm
+/.idea/
+
 # Eclipse
 /.buildpath
 /.project
@@ -8,3 +11,9 @@
 
 # Node.js
 /node_modules/
+
+# Composer
+/vendor/
+
+# WordPress
+/wordpress/
