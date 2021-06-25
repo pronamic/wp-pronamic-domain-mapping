@@ -39,6 +39,7 @@ function pronamic_domain_mapping_create_initial_post_types() {
 			'public'          => true,
 			'menu_position'   => 30,
 			'capability_type' => 'page',
+			'show_in_rest'    => true,
 			'supports'        => array(
 				'title',
 				'editor',
