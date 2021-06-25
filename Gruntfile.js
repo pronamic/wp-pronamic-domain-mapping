@@ -7,27 +7,7 @@ module.exports = function( grunt ) {
 
 		// PHPLint
 		phplint: {
-			options: {
-				phpArgs: {
-					'-lf': null
-				}
-			},
-			all: [ 'classes/**/*.php' ]
-		},
-
-		// PHP Code Sniffer
-		phpcs: {
-			application: {
-				src: [
-					'**/*.php',
-					'!deploy/**',
-					'!node_modules/**'
-				],
-			},
-			options: {
-				standard: 'phpcs.ruleset.xml',
-				showSniffCodes: true
-			}
+			all: [ 'src/**/*.php' ]
 		},
 
 		// JSHint
@@ -71,7 +51,9 @@ module.exports = function( grunt ) {
 					updatePoFiles: true,
 					exclude: [
 						'deploy/.*',
-						'node_modules/.*' 
+						'node_modules/.*',
+						'vendor/.*',
+						'wordpress/.*'
 					],
 				}
 			}
@@ -84,9 +66,10 @@ module.exports = function( grunt ) {
 					'**',
 					'!Gruntfile.js',
 					'!package.json',
-					'!phpcs.ruleset.xml',
+					'!phpcs.xml.dist',
 					'!deploy/**',
 					'!node_modules/**',
+					'!wordpress/**'
 				],
 				dest: 'deploy/latest',
 				expand: true
@@ -117,7 +100,7 @@ module.exports = function( grunt ) {
 		rt_wp_deploy: {
 			app: {
 				options: {
-					svnUrl: 'http://plugins.svn.wordpress.org/pronamic-domain-mapping/',
+					svnUrl: 'https://plugins.svn.wordpress.org/pronamic-domain-mapping/',
 					svnDir: 'deploy/wp-svn',
 					svnUsername: 'pronamic',
 					deployDir: 'deploy/latest',
@@ -163,7 +146,7 @@ module.exports = function( grunt ) {
 	} );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'jshint', 'phplint', 'phpcs', 'checkwpversion' ] );
+	grunt.registerTask( 'default', [ 'jshint', 'phplint', 'checkwpversion' ] );
 	grunt.registerTask( 'pot', [ 'makepot' ] );
 
 	grunt.registerTask( 'deploy', [

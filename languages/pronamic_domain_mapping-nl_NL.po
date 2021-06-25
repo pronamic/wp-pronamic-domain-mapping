@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Pronamic Domain Mapping\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pronamic-domain-"
-"mapping\n"
-"POT-Creation-Date: 2016-01-21 15:11:08+00:00\n"
-"PO-Revision-Date: 2016-09-14 10:53+0100\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-pronamic-"
+"domain-mapping\n"
+"POT-Creation-Date: 2021-06-25 10:09:00+00:00\n"
+"PO-Revision-Date: 2021-06-25 13:06+0200\n"
 "Last-Translator: Remco Tolsma <info@remcotolsma.nl>\n"
 "Language-Team: Pronamic <info@pronamic.nl>\n"
 "Language: nl_NL\n"
@@ -12,100 +12,105 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.7.4\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: wordpress\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: admin/domain-names.php:26
+#: admin/domain-names.php:36
 msgid "All"
 msgstr "Alles"
 
-#: admin/domain-names.php:34 admin/meta-box-domain-mapping.php:22
-#: classes/class-admin.php:216
+#: admin/domain-names.php:44 admin/meta-box-domain-mapping.php:30
+#: src/Admin.php:232
 msgid "Domain Name"
 msgstr "Domeinnaam"
 
-#: admin/domain-names.php:35
+#: admin/domain-names.php:45
 msgid "Title"
 msgstr "Titel"
 
-#: admin/domain-names.php:53
+#: admin/domain-names.php:69
 msgid "Edit"
 msgstr "Bewerken"
 
-#: admin/domain-names.php:57
+#: admin/domain-names.php:73
 msgid "View"
 msgstr "Bekijken"
 
-#: admin/meta-box-domain-mapping.php:46
+#: admin/meta-box-domain-mapping.php:54
 msgid "Google Analytics Tracking ID"
 msgstr "Google Analytics tracking ID"
 
-#: classes/class-admin.php:65 classes/class-admin.php:66
+#: includes/post.php:24
+msgid "Domain Name Page"
+msgstr "Domeinnaampagina"
+
+#: includes/post.php:29
+msgid "Add New Domain Name Page"
+msgstr "Nieuwe domeinnaampagina toevoegen"
+
+#: includes/post.php:30
+msgid "Edit Domain Name Page"
+msgstr "Bewerk domeinnaampagina"
+
+#: includes/post.php:31
+msgid "New Domain Name Page"
+msgstr "Nieuwe domeinnaampagina"
+
+#: includes/post.php:32
+msgid "View Domain Name Page"
+msgstr "Bekijk domeinnaampagina"
+
+#: includes/post.php:33
+msgid "Search Domain Name Pages"
+msgstr "Zoek domeinnaampagina's"
+
+#: includes/post.php:34
+msgid "No domain name pages found"
+msgstr "Geen domeinnaampagina's gevonden"
+
+#: includes/post.php:35
+msgid "No domain name pages found in Trash"
+msgstr "Geen domeinnaampagina's gevonden in prullenbak"
+
+#: includes/post.php:36
+msgid "Parent Domain Name Page:"
+msgstr "Bovenliggende domeinnaampagina:"
+
+#: includes/post.php:37
+msgid "Domain Name Pages"
+msgstr "Domeinpagina’s"
+
+#: src/Admin.php:81 src/Admin.php:82
 msgid "Domain Names"
 msgstr "Domeinnamen"
 
-#: classes/class-admin.php:91
+#: src/Admin.php:111
 msgid "Domain Name Mapping"
 msgstr "Domeinnaam koppeling"
 
-#: classes/class-admin.php:218
+#: src/Admin.php:234
 msgid "Google Analytics"
 msgstr "Google Analytics"
-
-#: includes/post.php:7
-msgid "Domain Name Page"
-msgstr "Domeinnaam pagina"
-
-#: includes/post.php:12
-msgid "Add New Domain Name Page"
-msgstr "Nieuwe domeinnaam pagina toevoegen"
-
-#: includes/post.php:13
-msgid "Edit Domain Name Page"
-msgstr "Bewerk domeinnaam pagina"
-
-#: includes/post.php:14
-msgid "New Domain Name Page"
-msgstr "Nieuwe domeinnaam pagina"
-
-#: includes/post.php:15
-msgid "View Domain Name Page"
-msgstr "Bekijk domeinnaam pagina"
-
-#: includes/post.php:16
-msgid "Search Domain Name Pages"
-msgstr "Zoek domeinnaam pagina's"
-
-#: includes/post.php:17
-msgid "No domain name pages found"
-msgstr "Geen domeinnaam pagina's gevonden"
-
-#: includes/post.php:18
-msgid "No domain name pages found in Trash"
-msgstr "Geen domeinnaam pagina's gevonden in prullenbak"
-
-#: includes/post.php:19
-msgid "Parent Domain Name Page:"
-msgstr "Bovenliggende domeinnaam pagina:"
-
-#: includes/post.php:20
-msgid "Domain Name Pages"
-msgstr "Domeinnaam pagina's"
 
 #. Plugin Name of the plugin/theme
 msgid "Pronamic Domain Mapping"
 msgstr "Pronamic domeinnaam koppeling"
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.pronamic.eu/plugins/pronamic-domain-mapping/"
-msgstr "http://www.pronamic.eu/plugins/pronamic-domain-mapping/"
+msgid "https://www.pronamic.eu/plugins/pronamic-domain-mapping/"
+msgstr "https://www.pronamic.eu/plugins/pronamic-domain-mapping/"
 
 #. Description of the plugin/theme
 msgid ""
 "The Pronamic Domain Mapping plugin allows you to map domains to custom "
 "domain name pages."
 msgstr ""
-"Met de Pronamic domein koppeling plugin kun je domeinnamen koppeling aan "
+"Met de Pronamic domein koppeling plugin kun je domeinnamen koppelen aan "
 "maatwerk domeinnaam pagina's."
 
 #. Author of the plugin/theme
@@ -113,25 +118,25 @@ msgid "Pronamic"
 msgstr "Pronamic"
 
 #. Author URI of the plugin/theme
-msgid "http://www.pronamic.eu/"
-msgstr "http://www.pronamic.nl/"
+msgid "https://www.pronamic.eu/"
+msgstr "https://www.pronamic.nl/"
 
-#: includes/post.php:9
+#: includes/post.php:26
 msgctxt "post type general name"
 msgid "Domain Name Pages"
-msgstr "Domeinnaam pagina's"
+msgstr "Domeinnaampagina's"
 
-#: includes/post.php:10
+#: includes/post.php:27
 msgctxt "post type singular name"
 msgid "Domain Name Page"
-msgstr "Domeinnaam pagina"
+msgstr "Domeinnaampagina"
 
-#: includes/post.php:11
+#: includes/post.php:28
 msgctxt "pronamic_domain_page"
 msgid "Add New"
 msgstr "Nieuwe pagina"
 
-#: includes/post.php:26
+#: includes/post.php:52
 msgctxt "slug"
 msgid "domain-name-page"
 msgstr "domeinnaam-pagina"
