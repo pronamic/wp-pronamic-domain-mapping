@@ -1,6 +1,6 @@
 {
   "name": "pronamic-domain-mapping",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.",
   "repository": {
     "type": "git",
