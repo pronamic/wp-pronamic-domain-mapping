@@ -2,7 +2,7 @@
 # This file is distributed under the GPL.
 msgid ""
 msgstr ""
-"Project-Id-Version: Pronamic Domain Mapping 2.0.0\n"
+"Project-Id-Version: Pronamic Domain Mapping 2.0.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/wp-pronamic-domain-mapping\n"
 "POT-Creation-Date: 2021-06-25 10:09:00+00:00\n"
