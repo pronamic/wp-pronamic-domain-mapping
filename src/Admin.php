@@ -297,6 +297,8 @@ class Admin {
 	 * @return void
 	 */
 	public function upgrade() {
+		global $wpdb;
+
 		require_once ABSPATH . '/wp-admin/includes/upgrade.php';
 
 		$charset_collate = '';

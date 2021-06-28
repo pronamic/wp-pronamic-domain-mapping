@@ -75,6 +75,9 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 == Changelog ==
 
+= 2.0.1 =
+*	Fixed creating required database table.
+
 = 2.0.0 =
 *	Added - Added support for block editor on domain name pages.
 *	Tweak - Supports adding `pronamic_domain_mapping` post type support.
