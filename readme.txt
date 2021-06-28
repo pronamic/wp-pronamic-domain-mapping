@@ -4,7 +4,7 @@ Tags: domain, mapping, landingpage, landingspage, page, dns, map, seo
 Donate link: https://www.pronamic.eu/donate/?for=wp-plugin-pronamic-domain-mapping&source=wp-plugin-readme-txt
 Requires at least: 3.2
 Tested up to: 5.7
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 
 The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.
@@ -74,6 +74,9 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 
 == Changelog ==
+
+= 2.0.1 =
+*	Fixed creating required database table.
 
 = 2.0.0 =
 *	Added - Added support for block editor on domain name pages.

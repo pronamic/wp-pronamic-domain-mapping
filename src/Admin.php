@@ -16,7 +16,7 @@ use WP_Post;
  * Pronamic Domain Mapping plugin admin.
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.1
  * @since   1.0.0
  */
 class Admin {
@@ -297,6 +297,8 @@ class Admin {
 	 * @return void
 	 */
 	public function upgrade() {
+		global $wpdb;
+
 		require_once ABSPATH . '/wp-admin/includes/upgrade.php';
 
 		$charset_collate = '';
