@@ -483,7 +483,7 @@ class Plugin {
 	 * @return bool
 	 */
 	public function wpseo_sitemap_exclude_post_type( $exclude, $post_type ) {
-		if ( 'pronamic_domain_page' !== $post_type ) {
+		if ( 'pronamic_domain_page' === $post_type ) {
 			$exclude = true;
 		}
 
