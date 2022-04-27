@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/pronamic/wp-pronamic-domain-mapping",
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.5.2",
     "grunt-aws-s3": "^2.0.2",
     "grunt-checkwpversion": "^0.3.0",
     "grunt-contrib-clean": "^2.0.0",
