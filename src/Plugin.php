@@ -16,7 +16,7 @@ use WP_Post;
  * Pronamic Domain Mapping plugin.
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.2
  * @since   1.0.0
  */
 class Plugin {
@@ -483,7 +483,7 @@ class Plugin {
 	 * @return bool
 	 */
 	public function wpseo_sitemap_exclude_post_type( $exclude, $post_type ) {
-		if ( 'pronamic_domain_page' !== $post_type ) {
+		if ( 'pronamic_domain_page' === $post_type ) {
 			$exclude = true;
 		}
 

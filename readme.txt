@@ -3,17 +3,15 @@ Contributors: pronamic, remcotolsma
 Tags: domain, mapping, landingpage, landingspage, page, dns, map, seo
 Donate link: https://www.pronamic.eu/donate/?for=wp-plugin-pronamic-domain-mapping&source=wp-plugin-readme-txt
 Requires at least: 3.2
-Tested up to: 5.7
-Stable tag: 2.0.1
+Tested up to: 6.0
+Stable tag: 2.0.2
 License: GPLv2 or later
 
 The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.
 
 == Description ==
 
-With the Pronamic Domain Mapping plugin you can easily publish a page on the 
-domain aliases or pointers of your hosting solution. This way you can easily 
-publish landinspages on the extra domain names you own.
+With the Pronamic Domain Mapping plugin you can easily publish a page on the domain aliases or pointers of your hosting solution. This way you can easily publish landing pages on the extra domain names you own.
 
 = WordPress Network =
 
@@ -74,6 +72,9 @@ Have a question? Make a thread in the support forum and we will get back to you.
 
 
 == Changelog ==
+
+= 2.0.2 =
+*	Fixed excluding post types from Yoast SEO sitemap.
 
 = 2.0.1 =
 *	Fixed creating required database table.
