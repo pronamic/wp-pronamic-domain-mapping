@@ -24,7 +24,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-jshint": "^3.2.0",
     "grunt-git": "^1.0.14",
     "grunt-phplint": "0.1.0",
     "grunt-rt-wp-deploy": "^0.1.2",
