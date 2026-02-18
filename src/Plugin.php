@@ -227,6 +227,11 @@ class Plugin {
 		);
 
 		if ( ! empty( $this->domain_page_id ) ) {
+			// Set the page ID in $_GET to differentiate cached pages.
+			// This prevents cache collisions when serving domain-mapped pages.
+			// @link https://github.com/WordPress/WordPress/blob/4.9.4/wp-includes/canonical.php#L167
+			$_GET['p'] = $this->domain_page_id;
+
 			// @link https://github.com/WordPress/WordPress/blob/4.0/wp-includes/option.php#L112-L123
 			// @link https://github.com/Yoast/google-analytics-for-wordpress/blob/5.1/includes/class-options.php#L9-L14
 			add_filter( 'option_yst_ga', array( $this, 'option_yst_ga' ) );
