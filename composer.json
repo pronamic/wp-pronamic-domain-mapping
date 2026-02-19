@@ -30,32 +30,28 @@
 	},
 	"config": {
 		"platform": {
-			"php": "5.6.20"
+			"php": "8.2"
 		},
 		"sort-packages": true,
 		"allow-plugins": {
-			"bamarni/composer-bin-plugin": true,
 			"composer/installers": true,
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"roots/wordpress-core-installer": true
 		}
 	},
 	"require": {
-		"php": ">=5.6.20",
+		"php": "8.2",
 		"composer/installers": "^1.7"
 	},
 	"require-dev": {
-		"bamarni/composer-bin-plugin": "^1.4",
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
 		"php-coveralls/php-coveralls": "^2.4",
 		"phpcompatibility/php-compatibility": "^9.3",
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"phpmd/phpmd": "^2.9",
-		"phpunit/phpunit": "^5.7",
-		"roots/wordpress": "^5.7",
-		"squizlabs/php_codesniffer": "^3.5",
-		"wp-coding-standards/wpcs": "^2.3",
-		"wp-phpunit/wp-phpunit": "^5.7"
+		"pronamic/wp-coding-standards": "^2.4",
+		"roots/wordpress": "^6.9",
+		"wp-phpunit/wp-phpunit": "^6.9",
+		"yoast/phpunit-polyfills": "^1.1"
 	},
 	"scripts": {
 		"coveralls": "vendor/bin/php-coveralls -v",
