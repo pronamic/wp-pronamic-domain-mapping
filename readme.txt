@@ -74,7 +74,7 @@ Have a question? Make a thread in the support forum and we will get back to you.
 == Changelog ==
 
 = 2.0.3 =
-*	Fixed cache collision for SiteGrouns Optimizer.
+*	Fixed cache collision for SiteGround Optimizer.
 
 = 2.0.2 =
 *	Fixed excluding post types from Yoast SEO sitemap.
