@@ -4,7 +4,7 @@
  * Plugin URI: https://www.pronamic.eu/plugins/pronamic-domain-mapping/
  * Description: The Pronamic Domain Mapping plugin allows you to map domains to custom domain name pages.
  *
- * Version: 2.0.2
+ * Version: 2.0.3
  * Requires at least: 3.2
  * Requires PHP: 8.2
  *
