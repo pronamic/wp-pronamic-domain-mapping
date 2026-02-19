@@ -41,7 +41,7 @@
 	},
 	"require": {
 		"php": "8.2",
-		"composer/installers": "^1.7"
+		"composer/installers": "^2.3"
 	},
 	"require-dev": {
 		"php-coveralls/php-coveralls": "^2.4",
@@ -51,7 +51,7 @@
 		"pronamic/wp-coding-standards": "^2.4",
 		"roots/wordpress": "^6.9",
 		"wp-phpunit/wp-phpunit": "^6.9",
-		"yoast/phpunit-polyfills": "^1.1"
+		"yoast/phpunit-polyfills": "^4.0"
 	},
 	"scripts": {
 		"coveralls": "vendor/bin/php-coveralls -v",
