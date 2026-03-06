@@ -140,7 +140,11 @@ class Admin {
 		}
 
 		// Verify nonce.
-		$nonce = isset( $_POST['pronamic_domain_mapping_meta_box_nonce'] ) ? \sanitize_text_field( \wp_unslash( $_POST['pronamic_domain_mapping_meta_box_nonce'] ) ) : null;
+		if ( ! isset( $_POST['pronamic_domain_mapping_meta_box_nonce'] ) ) {
+			return;
+		}
+
+		$nonce = \sanitize_text_field( \wp_unslash( $_POST['pronamic_domain_mapping_meta_box_nonce'] ) );
 
 		if ( ! \wp_verify_nonce( $nonce, 'pronamic_domain_mapping_save' ) ) {
 			return;
