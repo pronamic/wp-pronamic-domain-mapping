@@ -204,7 +204,7 @@ class Plugin {
 		$host = null;
 
 		if ( \array_key_exists( 'HTTP_HOST', $_SERVER ) ) {
-			$host = \filter_var( \wp_unslash( $_SERVER['HTTP_HOST'] ), \FILTER_SANITIZE_STRING );
+			$host = \sanitize_text_field( \wp_unslash( $_SERVER['HTTP_HOST'] ) );
 		}
 
 		if ( isset( $pronamic_domain_mapping_sunrise_host ) ) {
@@ -413,7 +413,7 @@ class Plugin {
 			$requested_url .= $pronamic_domain_mapping_sunrise_host;
 
 			if ( \array_key_exists( 'REQUEST_URI', $_SERVER ) ) {
-				$requested_url .= filter_var( \wp_unslash( $_SERVER['REQUEST_URI'] ), \FILTER_SANITIZE_STRING );
+				$requested_url .= \sanitize_text_field( \wp_unslash( $_SERVER['REQUEST_URI'] ) );
 			}
 		}
 

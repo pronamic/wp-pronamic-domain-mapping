@@ -30,7 +30,7 @@ $wpdb->pronamic_domain_posts = $wpdb->base_prefix . 'pronamic_domain_posts';
 $host = null;
 
 if ( array_key_exists( 'HTTP_HOST', $_SERVER ) ) {
-	$host = \filter_var( \wp_unslash( $_SERVER['HTTP_HOST'] ), \FILTER_SANITIZE_STRING );
+	$host = \sanitize_text_field( \wp_unslash( $_SERVER['HTTP_HOST'] ) );
 }
 
 $blog_host = null;

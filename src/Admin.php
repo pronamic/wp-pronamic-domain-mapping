@@ -140,7 +140,7 @@ class Admin {
 		}
 
 		// Verify nonce.
-		$nonce = \filter_input( INPUT_POST, 'pronamic_domain_mapping_meta_box_nonce', FILTER_SANITIZE_STRING );
+		$nonce = isset( $_POST['pronamic_domain_mapping_meta_box_nonce'] ) ? \sanitize_text_field( \wp_unslash( $_POST['pronamic_domain_mapping_meta_box_nonce'] ) ) : null;
 
 		if ( ! \wp_verify_nonce( $nonce, 'pronamic_domain_mapping_save' ) ) {
 			return;
@@ -152,7 +152,7 @@ class Admin {
 		}
 
 		// OK.
-		$host = filter_input( INPUT_POST, '_pronamic_domain_mapping_host', FILTER_SANITIZE_STRING );
+		$host = isset( $_POST['_pronamic_domain_mapping_host'] ) ? \sanitize_text_field( \wp_unslash( $_POST['_pronamic_domain_mapping_host'] ) ) : null;
 
 		global $wpdb;
 
@@ -173,13 +173,17 @@ class Admin {
 		);
 
 		// Meta.
-		$definition = array(
-			'_pronamic_domain_mapping_protocol' => FILTER_SANITIZE_STRING,
-			'_pronamic_domain_mapping_host'     => FILTER_SANITIZE_STRING,
-			'_pronamic_domain_mapping_ga_ua'    => FILTER_SANITIZE_STRING,
+		$meta_keys = array(
+			'_pronamic_domain_mapping_protocol',
+			'_pronamic_domain_mapping_host',
+			'_pronamic_domain_mapping_ga_ua',
 		);
 
-		$data = \filter_input_array( INPUT_POST, $definition );
+		$data = array();
+
+		foreach ( $meta_keys as $meta_key ) {
+			$data[ $meta_key ] = isset( $_POST[ $meta_key ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ $meta_key ] ) ) : null;
+		}
 
 		foreach ( $data as $key => $value ) {
 			if ( empty( $value ) ) {
