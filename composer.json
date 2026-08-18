@@ -51,10 +51,23 @@
 		"phpmd/phpmd": "^2.9",
 		"pronamic/wp-coding-standards": "^2.4",
 		"roots/wordpress": "^6.9",
+		"wp-cli/dist-archive-command": "*",
+		"wp-cli/wp-cli-bundle": "*",
 		"wp-phpunit/wp-phpunit": "^6.9",
 		"yoast/phpunit-polyfills": "^4.0"
 	},
 	"scripts": {
+		"build": [
+			"rm -rf ./build/stage-1",
+			"rm -rf ./build/pronamic-domain-mapping/*",
+			"rsync --recursive --verbose --exclude-from=.distignore --exclude=/vendor/ ./ ./build/stage-1/",
+			"composer install --no-dev --prefer-dist --optimize-autoloader --working-dir=./build/stage-1/",
+			"rsync --recursive --verbose --exclude-from=.distignore ./build/stage-1/ ./build/pronamic-domain-mapping/",
+			"vendor/bin/wp i18n make-pot ./build/pronamic-domain-mapping/ --slug=pronamic-domain-mapping",
+			"vendor/bin/wp i18n make-mo ./build/pronamic-domain-mapping/languages/",
+			"vendor/bin/wp dist-archive ./build/pronamic-domain-mapping/ --plugin-dirname=pronamic-domain-mapping --force"
+		],
+		"dist-archive": "wp dist-archive . --plugin-dirname=pronamic-domain-mapping",
 		"coveralls": "vendor/bin/php-coveralls -v",
 		"phpcbf":"vendor/bin/phpcbf",
 		"phpcs": "XDEBUG_MODE=off vendor/bin/phpcs -s -v",
@@ -65,7 +78,11 @@
 		"post-install-cmd": "echo 'Optionally run: composer bin all install'",
 		"post-update-cmd": "echo 'Optionally run: composer bin all update'",
 		"psalm": "vendor/bin/psalm",
-		"make-pot": "wp i18n make-pot . languages/pronamic_domain_mapping.pot --slug='pronamic_domain_mapping'",
+		"make-pot": [
+			"@build",
+			"rsync --recursive --delete --verbose ./build/pronamic-domain-mapping/languages/ ./languages/",
+			"vendor/bin/wp i18n update-po ./languages/pronamic_domain_mapping.pot ./languages/"
+		],
 		"update-po": "find languages/*.po -type f -exec msgmerge --update --backup=off {} languages/pronamic_domain_mapping.pot \\;"
 	}
 }
